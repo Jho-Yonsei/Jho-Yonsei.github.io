@@ -1,0 +1,7 @@
+@article{jang2024multi,
+  title={Multi-scale Structural Graph Convolutional Network for Skeleton-based Action Recognition},
+  author={Jang, Sungjun and Lee, Heansung and Kim, Woo Jin and Lee, Jungho and Woo, Sungmin and Lee, Sangyoun},
+  journal={IEEE Transactions on Circuits and Systems for Video Technology},
+  year={2024},
+  publisher={IEEE}
+}
