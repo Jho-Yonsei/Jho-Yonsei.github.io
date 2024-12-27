@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="google-site-verification" content="OyeXgTR1QZbSmeTOwBBQTD__YH38MO3HfwH364OIAdQ" />
+  <meta charset="utf-8">
+  <meta name="description"
+        content="CRiM-GS: Continuous Rigid Motion-Aware Gaussian Splatting from Motion Blur Images">
+  <meta name="keywords" content="VastGaussian">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CRiM-GS: Continuous Rigid Motion-Aware Gaussian Splatting from Motion Blur Images</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/icon.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <script src="./static/js/video_comparison.js"></script>
+
+  <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+
+  
+</script>        
+  
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+});
+</script>
+
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body", style="padding-bottom: 0rem;">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-2 publication-title">CRiM-GS: Continuous Rigid Motion-Aware<br>Gaussian Splatting from Motion Blur Images</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://Jho-Yonsei.github.io">Jungho Lee</a>&nbsp;&nbsp;</span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=BaFYtwgAAAAJ&hl=ko">DongHyeong Kim</a>&nbsp;&nbsp;</span>
+            <span class="author-block">
+              <a href="https://dogyoonlee.github.io">Dogyoon Lee</a>&nbsp;&nbsp;</span>
+            </span>
+            <span class="author-block">
+              <a href="https://suhwan-cho.github.io">Suhwan Cho</a>&nbsp;&nbsp;</span>
+            </span>
+            <span class="author-block">
+              <a href="https://hydragon.co.kr">Minhyeok Lee</a>&nbsp;&nbsp;</span>
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=b7A10VYAAAAJ&hl=ko">Sangyoun Lee</a><sup>†</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block", style="color:#726f6f">Yonsei University&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block", style="font-size: 15px;color:#726f6f"><sup>†&nbsp;</sup>Corresponding author </span>
+          <!-- </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block", style="color:#367DBD";>ArXiv</span> -->
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2407.03923"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/Jho-Yonsei/CRiM-GS"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/Jho-Yonsei/CRiM-GS"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Datasets</span>
+                  </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- <section class="section">
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-three-fifths">
+      <img alt="Architecture" src="./static/images/teasor.png" width="100%"/>
+    </div>
+  </div>
+</div>
+</section> -->
+
+<section class="section">
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-three-fifths">
+      <figure>
+        <img src="./static/images/teasor.png" alt="PDF Thumbnail" height="100%">
+        <br><br>
+        <figcaption>We propose CRiM-GS, a novel framework for reconstructing 3D scenes from camera motion-blurred images. The top image of (b) represents the camera poses obtained through CRiM-GS, showing a continuous trajectory indicated by gradually changing colors.
+      </figure>
+    </div>
+  </div>
+</div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+      </div>
+    </div>
+    <div class="content has-text-justified">
+      <p>
+        <br>3D Gaussian Splatting (3DGS) has gained significant attention for their high-quality novel view rendering, motivating research to address real-world challenges. A critical issue is the camera motion blur caused by movement during exposure, which hinders accurate 3D scene reconstruction. In this study, we propose CRiM-GS, a Continuous Rigid Motion-aware Gaussian Splatting that reconstructs precise 3D scenes from motion-blurred images while maintaining real-time rendering speed. Considering the complex motion patterns inherent in real-world camera movements, we predict continuous camera trajectories using neural ordinary differential equations (ODE). To ensure accurate modeling, we employ rigid body transformations with proper regularization, preserving object shape and size. Additionally, we introduce an adaptive distortion-aware transformation to compensate for potential nonlinear distortions, such as rolling shutter effects, and unpredictable camera movements. By revisiting fundamental camera theory and leveraging advanced neural training techniques, we achieve precise modeling of continuous camera trajectories. Extensive experiments demonstrate state-of-the-art performance both quantitatively and qualitatively on benchmark datasets.
+      </p>
+    </div>
+  </section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-max">
+        <h2 class="title is-3">Method</h2>
+        <br>
+        <img alt="Architecture" src="./static/images/figure2.png" width="100%"/>
+      </div>
+    </div>
+    <div class="content has-text-justified">
+      <br>
+      <p>
+        First, we apply neural ordinary differential equations to model continuous camera movement during exposure time. By continuously modeling the camera trajectory in 3D space, we introduce a model that is fundamentally different from existing methods. Second, we incorporate rigid body transformations with explicit regularization, to accurately capture the shape and size of the static subject during camera movement. Third, to address potential nonlinear distortions that can occur during fast camera motion, such as small rolling-shutter effects, we propose an adaptive distortion-aware transformation. This transformation softly refines the rigid body transformation with a higher degree of freedom.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section">
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-three-fifths">
+      <h2 class="title is-3">Rendering Results</h2>
+      <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/rendering_full_new.mp4"
+                type="video/mp4">
+      </video>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-three-fifths">
+          <h2 class="title is-3">Comparison with State-of-the-Arts</h2>
+          <p class="subtitle has-text-centered">
+            <br>Please click the videos for better view.
+          </p>
+        </div>
+      </div>
+      <div class="columns is-centered">
+        <div class="column is-one-third">
+          <div class="video-compare-container" id="materialsDiv1">
+            <video class="video" id="materials1" loop playsinline autoPlay muted src="./static/videos/Comparison_GS_new.mp4" onplay="resizeAndPlay(this)"></video>
+            <canvas height=0 class="videoMerge" id="materials1Merge" style="border-radius: 10px;"></canvas>
+          </div>
+        </div>
+
+        <div class="column is-one-third">
+          <div class="video-compare-container" id="materialsDiv2">
+            <video class="video" id="materials2" loop playsinline autoPlay muted src="./static/videos/Comparison_DPNeRF_new.mp4" onplay="resizeAndPlay(this)"></video>
+            <canvas height=0 class="videoMerge" id="materials2Merge" style="border-radius: 10px;"></canvas>
+          </div>
+        </div>
+
+        <div class="column is-one-third">
+          <div class="video-compare-container" id="materialsDiv3">
+            <video class="video" id="materials3" loop playsinline autoPlay muted src="./static/videos/Comparison_PDRF_new.mp4" onplay="resizeAndPlay(this)"></video>
+            <canvas height=0 class="videoMerge" id="materials3Merge" style="border-radius: 10px;"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns is-centered">
+        <div class="column is-one-third">
+          <div class="video-compare-container" id="materialsDiv4">
+            <video class="video" id="materials4" loop playsinline autoPlay muted src="./static/videos/Comparison_BADGS_new.mp4" onplay="resizeAndPlay(this)"></video>
+            <canvas height=0 class="videoMerge" id="materials4Merge" style="border-radius: 10px;"></canvas>
+          </div>
+        </div>
+
+        <div class="column is-one-third">
+          <div class="video-compare-container" id="materialsDiv5">
+            <video class="video" id="materials5" loop playsinline autoPlay muted src="./static/videos/Comparison_DeblurGS_new.mp4" onplay="resizeAndPlay(this)"></video>
+            <canvas height=0 class="videoMerge" id="materials5Merge" style="border-radius: 10px;"></canvas>
+          </div>
+        </div>
+
+        <div class="column is-one-third">
+          <div class="video-compare-container" id="materialsDiv6">
+            <video class="video" id="materials6" loop playsinline autoPlay muted src="./static/videos/Comparison_BAGS_new.mp4" onplay="resizeAndPlay(this)"></video>
+            <canvas height=0 class="videoMerge" id="materials6Merge" style="border-radius: 10px;"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-three-fifths">
+      <h2 class="title is-3">Additional Rendering Results</h2>
+      <p class="subtitle has-text-centered">
+        Please click the videos for better view.
+      </p>
+    </div>
+  </div>
+  <div class="columns is-centered has-text-centered">
+    <div class="columns is-centered">
+      <div class="column is-one-fifth">
+        <div class="video-compare-container" id="materialsDiv7">
+          <video class="video" id="materials7" loop playsinline autoPlay muted src="./static/videos/output/basket_new.mp4" onplay="resizeAndPlay(this)"></video>
+          <canvas height=0 class="videoMerge" id="materials7Merge" style="border-radius: 10px;"></canvas>
+        </div>
+      </div>
+
+      <div class="column is-one-fifth">
+        <div class="video-compare-container" id="materialsDiv8">
+          <video class="video" id="materials8" loop playsinline autoPlay muted src="./static/videos/output/puppet_new.mp4" onplay="resizeAndPlay(this)"></video>
+          <canvas height=0 class="videoMerge" id="materials8Merge" style="border-radius: 10px;"></canvas>
+        </div>
+      </div>
+
+      <div class="column is-one-fifth">
+        <div class="video-compare-container" id="materialsDiv9">
+          <video class="video" id="materials9" loop playsinline autoPlay muted src="./static/videos/output/coffee_new.mp4" onplay="resizeAndPlay(this)"></video>
+          <canvas height=0 class="videoMerge" id="materials9Merge" style="border-radius: 10px;"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="columns is-centered has-text-centered">
+    <div class="columns is-centered">
+      <div class="column is-one-fifth">
+        <div class="video-compare-container" id="materialsDiv10">
+          <video class="video" id="materials10" loop playsinline autoPlay muted src="./static/videos/output/tanabata_new.mp4" onplay="resizeAndPlay(this)"></video>
+          <canvas height=0 class="videoMerge" id="materials10Merge" style="border-radius: 10px;"></canvas>
+        </div>
+      </div>
+
+      <div class="column is-one-fifth">
+        <div class="video-compare-container" id="materialsDiv11">
+          <video class="video" id="materials11" loop playsinline autoPlay muted src="./static/videos/output/pool_new.mp4" onplay="resizeAndPlay(this)"></video>
+          <canvas height=0 class="videoMerge" id="materials11Merge" style="border-radius: 10px;"></canvas>
+        </div>
+      </div>
+
+      <div class="column is-one-fifth">
+        <div class="video-compare-container" id="materialsDiv12">
+          <video class="video" id="materials12" loop playsinline autoPlay muted src="./static/videos/output/cozy2room_new.mp4" onplay="resizeAndPlay(this)"></video>
+          <canvas height=0 class="videoMerge" id="materials12Merge" style="border-radius: 10px;"></canvas>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+     <pre><code>@misc{lee2024crimgscontinuousrigidmotionaware,
+      title={CRiM-GS: Continuous Rigid Motion-Aware Gaussian Splatting from Motion-Blurred Images}, 
+      author={Jungho Lee and Donghyeong Kim and Dogyoon Lee and Suhwan Cho and Minhyeok Lee and Sangyoun Lee},
+      year={2024},
+      eprint={2407.03923},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2407.03923}, 
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            We thank the authors of <a
+            href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> that kindly open sourced the template of this website.
+            The html script of video comparison is borrowed from <a
+            href="https://dorverbin.github.io/refnerf/">Ref-NeRF</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.video-compare-container').forEach(function (container, index) {
+      console.log("Index of the container:", index);
+      container.addEventListener('click', function () {
+        if (index % 3 === 0) {
+          this.classList.toggle('expand-right');
+        } else if (index % 3 === 1) {
+          this.classList.toggle('expanded');
+        } else if (index % 3 === 2) {
+          this.classList.toggle('expand-left');
+        } 
+        
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
