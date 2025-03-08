@@ -52,7 +52,55 @@
         </tbody></table>
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
 
-            
+     
+          
+    <tr onmouseout="crimgs_stop()" onmouseover="crimgs_start()" bgcolor="#ffffd0">
+      <td style="padding:20px;width:25%;vertical-align:middle">
+        <div class="one">
+          <div class="two" id='crimgs_image'><video  width=100% muted autoplay loop>
+          <source src="images/crim/crimgs.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+          </video></div>
+          <img src='images/crim/crimgs.png' width=100%>
+        </div>
+        <script type="text/javascript">
+          function crimgs_start() {
+            document.getElementById('crimgs_image').style.opacity = "1";
+          }
+
+          function crimgs_stop() {
+            document.getElementById('crimgs_image').style.opacity = "0";
+          }
+          crimgs_stop()
+        </script>
+      </td>
+      <td style="padding:20px;width:75%;vertical-align:middle">
+        <a href="https://Jho-Yonsei.github.io/CoMoGaussian/">
+          <papertitle>CoMoGaussian: Continuous Motion-Aware Gaussian Splatting from Motion-Blurred Images</papertitle>
+        </a>
+        <br>
+        <strong>Jungho Lee</strong>,
+        Donghyeong Kim,
+        <a href="https://dogyoonlee.github.io/">Dogyoon Lee</a>,
+        <a href="https://suhwan-cho.github.io/">Suhwan Cho</a>,
+        <a href="https://hydragon.co.kr">Minhyeok Lee</a>,
+        Wonjoon Lee,
+        <a href="https://taeoh-kim.github.io">Taeoh Kim</a>,
+        Dongyoon Wee,
+        Sangyoun Lee
+        <br>
+        <em>arXiv</em>, 2024
+        <br>
+        <a href="https://Jho-Yonsei.github.io/CRiM-GS">project page</a>
+        /
+        <a href="https://arxiv.org/abs/2407.03923">arXiv</a>
+        <p></p>
+        <p>
+          We propose continous motion-aware blur kernel on 3D gaussian splatting utilizing 3D rigid transformation and neural ordinary differential function to reconstruct accurate 3D scene from blurry images with real-time rendering speed.
+        </p>
+      </td>
+    </tr>
+          
     <tr onmouseout="cocogaussian_stop()" onmouseover="cocogaussian_start()" bgcolor="#ffffd0">
       <td style="padding:20px;width:25%;vertical-align:middle">
         <div class="one">
@@ -82,12 +130,12 @@
         <strong>Jungho Lee</strong>,
         <a href="https://suhwan-cho.github.io">Suhwan Cho</a>,
         <a href="https://taeoh-kim.github.io">Taeoh Kim</a>,
-        <a href="https://scholar.google.co.kr/citations?user=RJZ6W24AAAAJ&hl=en">Ho-Deok Jang</a>,
+        Ho-Deok Jang,
         <a href="https://hydragon.co.kr">Minhyeok Lee</a>,
-        <a href="https://scholar.google.co.kr/citations?user=1uQa-hoAAAAJ&hl=ko">Geonho Cha</a>,
-        <a href="https://scholar.google.com/citations?user=oEKX8h0AAAAJ&hl=ko">Dongyoon Wee</a>,
+        Geonho Cha,
+        Dongyoon Wee,
         <a href="https://dogyoonlee.github.io/">Dogyoon Lee</a>,
-        <a href="https://scholar.google.com/citations?user=b7A10VYAAAAJ&hl=ko">Sangyoun Lee</a>
+        Sangyoun Lee
         <br>
         <em>IEEE/CVF Computer Vision and Pattern Recognition (<strong>CVPR</strong>)</em>, 2025
         <br>
@@ -101,51 +149,6 @@
       </td>
     </tr>
             
-            
-            
-    <!-- <tr onmouseout="crimgs_stop()" onmouseover="crimgs_start()" bgcolor="#ffffd0">
-      <td style="padding:20px;width:25%;vertical-align:middle">
-        <div class="one">
-          <div class="two" id='crimgs_image'><video  width=100% muted autoplay loop>
-          <source src="images/crim/crimgs.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-          </video></div>
-          <img src='images/crim/crimgs.png' width=100%>
-        </div>
-        <script type="text/javascript">
-          function crimgs_start() {
-            document.getElementById('crimgs_image').style.opacity = "1";
-          }
-
-          function crimgs_stop() {
-            document.getElementById('crimgs_image').style.opacity = "0";
-          }
-          crimgs_stop()
-        </script>
-      </td>
-      <td style="padding:20px;width:75%;vertical-align:middle">
-        <a href="https://Jho-Yonsei.github.io/CRiM-GS/">
-          <papertitle>CRiM-GS: Continuous Rigid Motion-Aware Gaussian Splatting from Motion-Blurred Images</papertitle>
-        </a>
-        <br>
-        <strong>Jungho Lee</strong>,
-        <a href="https://scholar.google.com/citations?user=BaFYtwgAAAAJ&hl=ko">Donghyung Kim</a>,
-        <a href="https://dogyoonlee.github.io/">Dogyoon Lee</a>,
-        <a href="https://suhwan-cho.github.io/">Suhwan Cho</a>,
-        <a href="https://hydragon.co.kr">Minhyeok Lee</a>,
-        <a href="https://scholar.google.com/citations?user=b7A10VYAAAAJ&hl=ko&oi=ao">Sangyoun Lee</a>
-        <br>
-        <em>arXiv</em>, 2024
-        <br>
-        <a href="https://Jho-Yonsei.github.io/CRiM-GS">project page</a>
-        /
-        <a href="https://arxiv.org/abs/2407.03923">arXiv</a>
-        <p></p>
-        <p>
-          We propose continous motion-aware blur kernel on 3D gaussian splatting utilizing 3D rigid transformation and neural ordinary differential function to reconstruct accurate 3D scene from blurry images with real-time rendering speed.
-        </p>
-      </td>
-    </tr> -->
 
     
     <tr onmouseout="sam_stop()" onmouseover="sam_start()">
@@ -175,10 +178,10 @@
         <a href="https://hydragon.co.kr">Minhyeok Lee</a>,
         <a href="https://suhwan-cho.github.io/">Suhwan Cho</a>,
         <strong>Jungho Lee</strong>,
-        <a href="https://scholar.google.co.kr/citations?user=H647yqgAAAAJ&hl=ko">Sunghun Yang</a>, 
+        Sunghun Yang, 
         Heeseung Choi,
         Ig-Jae Kim,
-        <a href="https://scholar.google.com/citations?user=b7A10VYAAAAJ&hl=ko&oi=ao">Sangyoun Lee</a>
+        Sangyoun Lee
         <br>
         <em>IEEE/CVF Computer Vision and Pattern Recognition (<strong>CVPR</strong>)</em>, 2025
         <br>
@@ -224,10 +227,10 @@
         <br>
         <a href="https://hydragon.co.kr">Minhyeok Lee</a>,
         <a href="https://suhwan-cho.github.io/">Suhwan Cho</a>,
-        <a href="https://scholar.google.co.kr/citations?user=flyFxPsAAAAJ&hl=ko">Chajin Shin</a>,
+        Chajin Shin,
         <strong>Jungho Lee</strong>,
-        <a href="https://scholar.google.co.kr/citations?user=H647yqgAAAAJ&hl=ko">Sunghun Yang</a>, 
-        <a href="https://scholar.google.com/citations?user=b7A10VYAAAAJ&hl=ko&oi=ao">Sangyoun Lee</a>
+        Sunghun Yang, 
+        Sangyoun Lee
         <br>
         <em>The Association for the Advancement of Artificial Intelligence (<strong>AAAI</strong>)</em>, 2025
         <br>
@@ -273,9 +276,9 @@
         <a href="https://hydragon.co.kr">Minhyeok Lee</a>,
         <a href="https://suhwan-cho.github.io/">Suhwan Cho</a>,
         <a href="https://dogyoonlee.github.io/">Dogyoon Lee</a>,
-        <a href="https://dogyoonlee.github.io/">Chaewon Park</a>,
+        Chaewon Park,
         <strong>Jungho Lee</strong>,
-        <a href="https://scholar.google.com/citations?user=b7A10VYAAAAJ&hl=ko&oi=ao">Sangyoun Lee</a>
+        Sangyoun Lee
         <br>
         <em>IEEE/CVF Computer Vision and Pattern Recognition (<strong>CVPR</strong>)</em>, 2024
         <br>
@@ -362,7 +365,7 @@
         <strong>Jungho Lee</strong>,
         <a href="https://hydragon.co.kr">Minhyeok Lee</a>,
         <a href="https://dogyoonlee.github.io">Dogyoon Lee</a>,
-        <a href="https://scholar.google.com/citations?user=b7A10VYAAAAJ&hl=ko&oi=ao">Sangyoun Lee</a>,
+        Sangyoun Lee
         <br>
         <em>IEEE/CVF International Conference on Computer Vision (<strong>ICCV</strong>)</em>, 2023
         <br>
@@ -404,8 +407,8 @@
 				<a href="https://hydragon.co.kr">Minhyeok Lee</a>,
 				<a href="https://suhwan-cho.github.io">Suhwan Cho</a>,
 				<a href="https://sungmin-woo.github.io/">Sungmin Woo</a>,
-				<a href="https://scholar.google.com/citations?user=93X9IUsAAAAJ&hl=ko">Sungjun Jang</a>*,
-				<a href="https://scholar.google.com/citations?user=b7A10VYAAAAJ&hl=ko&oi=ao">Sangyoun Lee</a>*		
+				Sungjun Jang,
+				Sangyoun Lee
         <br>
         <em>IEEE/CVF International Conference on Computer Vision (<strong>ICCV</strong>)</em>, 2023
         <br>
@@ -444,12 +447,12 @@
           <papertitle>Multi-Scale Structural Graph Convolutional Network for Skeleton-Based Action Recognition</papertitle>
         </a>
         <br>
-        <a href="https://scholar.google.com/citations?user=93X9IUsAAAAJ&hl=ko">Sungjun Jang</a>,
-        <a href="https://scholar.google.com/citations?user=JeUKiGcAAAAJ&hl=ko">Heansung Lee</a>,
-        <a href="https://scholar.google.com/citations?user=_VnDn7gAAAAJ&hl=ko">Woo Jin Kim</a>,
+        Sungjun Jang,
+        Heansung Lee,
+        Woo Jin Kim,
         <strong>Jungho Lee</strong>,
         <a href="https://sungmin-woo.github.io/">Sungmin Woo</a>,
-        <a href="https://scholar.google.com/citations?user=b7A10VYAAAAJ&hl=ko&oi=ao">Sangyoun Lee</a>
+        Sangyoun Lee
         <br>
         <em>IEEE Transactions on Circuits and Systems for Video Technology (<strong>T-CSVT</strong>)</em>
         <br>
