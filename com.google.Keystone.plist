@@ -1,0 +1,17 @@
+<key>updatePolicies</key>
+<dict>
+ <key>global</key>
+ <dict>
+  <key>UpdateDefault</key>
+  <integer>3</integer>
+ </dict>
+ <key>com.google.Chrome</key>
+ <dict>
+  <key>UpdateDefault</key>
+  <integer>2</integer>
+  <key>TargetVersionPrefix</key>
+  <string>133.</string>
+  <key>RollbackToTargetVersion</key>
+  <true/>
+ </dict>
+</dict>
