@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="google-site-verification" content="OyeXgTR1QZbSmeTOwBBQTD__YH38MO3HfwH364OIAdQ" />
+  <meta charset="utf-8">
+  <meta name="description"
+        content="SwiftVGGT: Scalable Visual Geometry Grounded Transformer for Large-Scale Scenes">
+  <meta name="keywords" content="SwiftVGGT">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SwiftVGGT: Scalable Visual Geometry Grounded Transformer for Large-Scale Scenes</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"
+    async
+  ></script>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+
+    gtag("config", "G-TSQGH8Q0WV");
+  </script>
+
+  <script
+    type="module"
+    src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"
+  ></script>
+
+  <script
+    async
+    src="https://www.googletagmanager.com/gtag/js?id=G-TSQGH8Q0WV"
+  ></script>
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/icon.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <script src="./static/js/video_comparison.js"></script>
+
+
+  <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+
+  https://drive.google.com/file/d/1htDfHqG_i0zMIzk3xBf07B7nDB4VYgSj/view?usp=drive_link
+</script>        
+  
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+});
+</script>
+
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body", style="padding-bottom: 0rem;">
+    <div class="container is-max-widescreen">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-2 publication-title">SwiftVGGT: Scalable Visual Geometry Grounded Transformer for Large-Scale Scenes</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://Jho-Yonsei.github.io">Jungho Lee</a>&nbsp;&nbsp;
+            </span>
+            <span class="author-block">
+              <a href="https://hydragon.co.kr">Minhyeok Lee</a>&nbsp;&nbsp;
+            </span>
+            <span class="author-block">
+              Sunghun Yang&nbsp;&nbsp;
+            </span>
+            <span class="author-block">
+              Minseok Kang&nbsp;&nbsp;
+            </span>
+            <span class="author-block">
+              Sangyoun Lee
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block", style="color:#726f6f">Yonsei University</span>
+          </div>
+
+          <!-- <div class="is-size-4 publication-authors">
+            <span class="author-block", style="color:#523bb8">ICCV 2025</span>
+          </div> -->
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="https://arxiv.org/"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/Jho-Yonsei/SwiftVGGT"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<br>
+<br>
+<br>
+
+
+<style>
+  .video-border {
+    display: inline-block;
+    padding: 2px; /* adjust thickness of your 'border' */
+    border-radius: 4px;
+    background: linear-gradient(45deg, #ff9a9e, #fad0c4); /* try different gradient colors */
+  }
+  .video-border video {
+    display: block;
+    border: none;
+    border-radius: 4px; /* match the wrapper for a consistent look */
+  }
+</style>
+
+<style>
+  #teaser-video {
+    max-width: 100%;
+    margin: 0 auto;
+    display: block;
+    border: none; /* remove the solid border */
+    border-radius: 4px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  }
+  
+  #architecture-img {
+    width: 90%;
+    margin: 0 auto;
+    display: block;
+    border: none;
+    border-radius: 0; /* removed border radius */
+    box-shadow: none; /* removed box shadow */
+  }
+  
+  /* Enhanced style to further reduce space between buttons and teaser video */
+  .hero.teaser {
+    padding-top: 0;
+    margin-top: -3rem; /* Added negative margin to pull the teaser section up */
+  }
+  .hero.teaser .hero-body {
+    padding-top: 0; /* Reduced from 1rem to 0 */
+  }
+</style>
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="teaser-video" autoplay muted loop playsinline height="100%">
+        <source src="./assets/videos/teasor_video.mp4" type="video/mp4">
+      </video>
+      <h2 class="subtitle" style="text-align: center;"></h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-widescreen">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+      </div>
+    </div>
+    <div class="content has-text-justified">
+      <p>
+        <br>3D reconstruction in large-scale scenes is a fundamental task in 3D perception, but the inherent trade-off between accuracy and computational efficiency remains a sigificant challenge. Existing methods either prioritize speed and produce low-quality results, or achieve high-quality reconstruction at the cost of slow inference times. In this paper, we propose <strong>SwiftVGGT</strong>, a training-free method that significantly reduce inference time while preserving high-quality dense 3D reconstruction. To maintain global consistency in large-scale scenes, SwiftVGGT performs loop closure without relying on the external Visual Place Recognition (VPR) model. This removes redundant computation and enables accurate reconstruction over kilometer-scale environments. Furthermore, we propose a simple yet effective point sampling method to align neighboring chunks using a single Sim(3)-based Singular Value Decomposition (SVD) step. This eliminates the need for the Iteratively Reweighted Least Squares (IRLS) optimization commonly used in prior work, leading to substantial speed-ups. We evaluate SwiftVGGT on multiple datasets and show that it achieves state-of-the-art reconstruction quality while requiring only 33% of the inference time of recent VGGT-based large-scale reconstruction approaches.
+      </p>
+    </div>
+  </section>
+
+
+<section class="section">
+  <div class="container is-max-widescreen">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-max">
+        <h2 class="title is-3">Methods</h2>
+        <img alt="Architecture" src="./assets/images/method.png" width="100%"/>
+      </div>
+    </div>
+    <div class="content has-text-justified">
+      <p>
+        <strong>SwiftVGGT</strong> processes thousands of input images by dividing them into sliding-window chunks through VGGT. To reduce inference time, we eliminate the IRLS optimization step by applying reliability-guided point sampling. Furthermore, we utilize the patch tokens obtained from the VGGT's DINO transformer for loop detection directly, which further decreases the overall inference cost.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-widescreen">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-max">
+        <h2 class="title is-3">Quantitative Results</h2>
+        <img alt="Quantitative Result" src="./assets/images/quantitative.png" width="100%"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-widescreen">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-max">
+        <h2 class="title is-3">Visualization - KITTI</h2>
+
+        <div style="text-align:center; margin-bottom: 20px;">
+          <button onclick="changeScene('00', 'Inference: 637.6 (s)<br>ATE RMSE: 92.1 (m)', 'Inference: 836.6 (s)<br>ATE RMSE: 9.9 (m)', '<strong>Inference: 239.8 (s)</strong><br>ATE RMSE: 8.2 (m)', this)" class="button scene-btn">Sequence 00</button>
+          <button onclick="changeScene('05', 'Inference: 352.2 (s)<br>ATE RMSE: 118.5 (m)', 'Inference: 445.1 (s)<br>ATE RMSE: 9.1 (m)', '<strong>Inference: 138.7 (s)</strong><br>ATE RMSE: 11.9 (m)', this)" class="button scene-btn">Sequence 05</button>
+          <button onclick="changeScene('07', 'Inference: 123.7 (s)<br>ATE RMSE: 21.8 (m)', 'Inference: 159.3 (s)<br>ATE RMSE: 4.0 (m)', '<strong>Inference: 59.5 (s)</strong><br>ATE RMSE: 5.0 (m)', this)" class="button scene-btn">Sequence 07</button>
+          <button onclick="changeScene('09', 'Inference: 204.6 (s)<br>ATE RMSE: 72.3 (m)', 'Inference: 223.1 (s)<br>ATE RMSE: 47.5 (m)', '<strong>Inference: 79.9 (s)</strong><br>ATE RMSE: 44.1 (m)', this)" class="button scene-btn">Sequence 09</button>
+          <button onclick="changeScene('13', 'Inference: 408.8 (s)<br>ATE RMSE: 53.7 (m)', 'Inference: 501.4 (s)<br>ATE RMSE: 7.8 (m)', '<strong>Inference: 162.9 (s)</strong><br>ATE RMSE: 6.7 (m)', this)" class="button scene-btn">Sequence 13</button>
+        </div>
+
+        <div class="model-container" id="model-compare-wrapper">
+
+          <div class="model-wrapper-comparison">
+            <div class="overlay-text" id="overlay-droid"><br><br></div>
+            <div class="model-label">DROID-SLAM</div>
+            <model-viewer id="modelViewerComparison1" loading="eager"
+              touch-action="pan-y" environment-image="legacy"
+              zoom-sensitivity="0.2" camera-controls disable-tap min-camera-orbit="auto auto 10m"
+              max-camera-orbit="auto auto 40m" interaction-prompt="none" shadow-intensity="0" ar
+              orientation="10deg 180deg 0deg"
+              style="width: 100%; height: 100%;  background: #ffffff;">
+            </model-viewer>
+          </div>
+
+          <div class="model-wrapper-comparison">
+            <div class="overlay-text" id="overlay-long"><br><br></div>
+            <div class="model-label">VGGT-Long</div>
+            <model-viewer id="modelViewerComparison2" loading="eager"
+              touch-action="pan-y" environment-image="legacy"
+              zoom-sensitivity="0.2" camera-controls disable-tap min-camera-orbit="auto auto 10m"
+              max-camera-orbit="auto auto 40m" interaction-prompt="none" shadow-intensity="0" ar
+              orientation="10deg 180deg 0deg"
+              style="width: 100%; height: 100%;  background: #ffffff;">
+            </model-viewer>
+          </div>
+
+          <div class="model-wrapper-comparison">
+            <div class="model-label">SwiftVGGT</div>
+            <div class="overlay-text" id="overlay-swift"><br><br></div>
+            <model-viewer id="modelViewerComparison3" loading="eager"
+              touch-action="pan-y" environment-image="legacy"
+              zoom-sensitivity="0.2" camera-controls disable-tap min-camera-orbit="auto auto 10m"
+              max-camera-orbit="auto auto 40m" interaction-prompt="none" shadow-intensity="0" ar
+              orientation="10deg 180deg 0deg"
+              style="width: 100%; height: 100%;  background: #ffffff;">
+            </model-viewer>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<script>
+let mv1, mv2, mv3;
+let viewers = [];
+let activeViewer;
+let isSyncing = false;
+let isResetting = false;
+let currentSceneId = "00";
+
+const initialCameraByScene = {
+  "00": { orbit: "10deg 0deg 30m",   target: "0m 0m -3m", fov: "45deg" },
+  "05": { orbit: "5deg 0deg 30m",  target: "-1m 0m -2m", fov: "45deg" },
+  "07": { orbit: "5deg 0deg 30m", target: "-3.5m 0m 1m", fov: "45deg" },
+  "09": { orbit: "5deg 0deg 40m",  target: "3.5m 0m -5m", fov: "45deg" },
+  "13": { orbit: "5deg 0deg 27m", target: "0.85m 0m 0m", fov: "45deg" },
+};
+
+
+function applyCameraConfig(cfg) {
+  viewers.forEach(v => {
+    v.cameraOrbit  = cfg.orbit;
+    v.cameraTarget = cfg.target;
+    v.fieldOfView  = cfg.fov;
+  });
+}
+
+function resetCamerasToInitial(sceneId) {
+  const cfg = initialCameraByScene[sceneId] || initialCameraByScene["00"];
+  if (!cfg) return;
+
+  isResetting = true;
+  applyCameraConfig(cfg);
+  requestAnimationFrame(() => {
+    isResetting = false;
+  });
+}
+
+function syncFrom(source) {
+  if (isSyncing || isResetting) return;
+  isSyncing = true;
+
+  const orbit  = source.getCameraOrbit();
+  const target = source.getCameraTarget();
+  const fov    = source.getFieldOfView();
+
+  const orbitStr  = `${orbit.theta}rad ${orbit.phi}rad ${orbit.radius}m`;
+  const targetStr = `${target.x}m ${target.y}m ${target.z}m`;
+  const fovStr    = `${fov}deg`;
+
+  viewers.forEach(v => {
+    if (v === source) return;
+    v.cameraOrbit  = orbitStr;
+    v.cameraTarget = targetStr;
+    v.fieldOfView  = fovStr;
+  });
+
+  requestAnimationFrame(() => {
+    isSyncing = false;
+  });
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  mv1 = document.getElementById('modelViewerComparison1');
+  mv2 = document.getElementById('modelViewerComparison2');
+  mv3 = document.getElementById('modelViewerComparison3');
+
+  viewers = [mv1, mv2, mv3];
+  activeViewer = mv1;
+
+  viewers.forEach(v => {
+    v.addEventListener('load', () => {
+      resetCamerasToInitial(currentSceneId);
+    });
+
+    v.addEventListener('pointerdown', () => {
+      activeViewer = v;
+    });
+
+    v.addEventListener('camera-change', (e) => {
+      if (e.target !== activeViewer) return;
+      syncFrom(activeViewer);
+    });
+  });
+
+  resetCamerasToInitial(currentSceneId);
+});
+
+function changeScene(sceneId, droidValue, longValue, swiftValue, btn) {
+  currentSceneId = sceneId;
+
+  document.getElementById("modelViewerComparison1").src =
+    `./assets/pointcloud/${sceneId}_droid_slam.glb`;
+  document.getElementById("modelViewerComparison2").src =
+    `./assets/pointcloud/${sceneId}_vggt_long.glb`;
+  document.getElementById("modelViewerComparison3").src =
+    `./assets/pointcloud/${sceneId}_swiftvggt.glb`;
+
+  document.getElementById("overlay-droid").innerHTML = droidValue;
+  document.getElementById("overlay-long").innerHTML = longValue;
+  document.getElementById("overlay-swift").innerHTML = swiftValue;
+
+  const allButtons = document.querySelectorAll('.scene-btn');
+  allButtons.forEach(b => {
+    b.style.backgroundColor = "#546993";
+    b.style.color = "white";
+    b.style.borderColor = "#546993";
+  });
+  btn.style.backgroundColor = "#23A2DB";
+  btn.style.color = "white";
+  btn.style.borderColor = "#23A2DB";
+
+  resetCamerasToInitial(sceneId);
+}
+</script>
+
+<style>
+  .scene-btn {
+    margin: 0 8px;
+    background-color: #546993;
+    color: white;
+    border-color: #546993;
+  }
+</style>
+
+<style>
+  #overlay-droid,
+  #overlay-long,
+  #overlay-swift {
+    text-align: right;
+  }
+</style>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            We thank the authors of <a
+            href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> that kindly open sourced the template of this website.
+            The html script of video comparison is borrowed from <a
+            href="https://dorverbin.github.io/refnerf/">Ref-NeRF</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+<!-- <section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+     <pre><code>@article{lee2025comogaussian,
+  title={CoMoGaussian: Continuous Motion-Aware Gaussian Splatting from Motion-Blurred Images},
+  author={Lee, Jungho and Kim, Donghyeong and Lee, Dogyoon and Cho, Suhwan and Lee, Minhyeok and Lee, Wonjoon and Kim, Taeoh and Wee, Dongyoon and Lee, Sangyoun},
+  journal={arXiv preprint arXiv:2503.05332},
+  year={2025}
+}</code></pre>
+  </div>
+</section> -->
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.video-compare-container').forEach(function (container, index) {
+      console.log("Index of the container:", index);
+      container.addEventListener('click', function () {
+        if (index % 3 === 0) {
+          this.classList.toggle('expand-right');
+        } else if (index % 3 === 1) {
+          this.classList.toggle('expanded');
+        } else if (index % 3 === 2) {
+          this.classList.toggle('expand-left');
+        } 
+        
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

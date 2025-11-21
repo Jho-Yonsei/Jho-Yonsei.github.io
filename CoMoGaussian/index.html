@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="google-site-verification" content="OyeXgTR1QZbSmeTOwBBQTD__YH38MO3HfwH364OIAdQ" />
+  <meta charset="utf-8">
+  <meta name="description"
+        content="CoMoGaussian: Continuous Motion-Aware Gaussian Splatting from Motion Blur Images">
+  <meta name="keywords" content="VastGaussian">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CoMoGaussian: Continuous Motion-Aware Gaussian Splatting from Motion Blur Images</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/icon.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <script src="./static/js/video_comparison.js"></script>
+
+  <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+
+  https://drive.google.com/file/d/1htDfHqG_i0zMIzk3xBf07B7nDB4VYgSj/view?usp=drive_link
+</script>        
+  
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+});
+</script>
+
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body", style="padding-bottom: 0rem;">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-2 publication-title">CoMoGaussian: Continuous Motion-Aware<br>Gaussian Splatting from Motion Blur Images</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://Jho-Yonsei.github.io">Jungho Lee</a><sup>1</sup>&nbsp;&nbsp;
+            </span>
+            <span class="author-block">
+              DongHyeong Kim<sup>1</sup>&nbsp;&nbsp;
+            </span>
+            <span class="author-block">
+              <a href="https://dogyoonlee.github.io">Dogyoon Lee</a><sup>1</sup>&nbsp;&nbsp;
+            </span>
+            <span class="author-block">
+              <a href="https://suhwan-cho.github.io">Suhwan Cho</a><sup>1</sup>&nbsp;&nbsp;
+            </span>
+            <span class="author-block">
+              <a href="https://hydragon.co.kr">Minhyeok Lee</a><sup>1</sup>&nbsp;&nbsp;
+            </span>
+            <br>
+            <span class="author-block">
+              Wonjoon Lee<sup>1</sup>&nbsp;&nbsp;
+            </span>
+            <span class="author-block">
+              <a href="https://taeoh-kim.github.io">Taeoh Kim</a><sup>2</sup>&nbsp;&nbsp;
+            </span>
+            <span class="author-block">
+              Dongyoon Wee<sup>2</sup>&nbsp;&nbsp;
+            </span>
+            <span class="author-block">
+              Sangyoun Lee<sup>1,†</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block", style="color:#726f6f"><sup>1</sup>Yonsei University&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <span class="author-block", style="color:#726f6f"><sup>2</sup>NAVER Cloud&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          </div>
+
+          <!-- <div class="is-size-5 publication-authors">
+            <span class="author-block", style="font-size: 15px;color:#726f6f"><sup>†&nbsp;</sup>Corresponding author </span>
+          </div> -->
+
+          <div class="is-size-4 publication-authors">
+            <span class="author-block", style="color:#523bb8">ICCV 2025</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2503.05332"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/Jho-Yonsei/CoMoGaussian"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://drive.google.com/file/d/1htDfHqG_i0zMIzk3xBf07B7nDB4VYgSj/view?usp=drive_link"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Datasets</span>
+                  </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-three-fifths">
+      <figure>
+        <img src="./static/images/teasor.png" alt="PDF Thumbnail" height="100%">
+        <br>
+      </figure>
+    </div>
+  </div>
+</div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+      </div>
+    </div>
+    <div class="content has-text-justified">
+      <p>
+        <br>3D Gaussian Splatting (3DGS) has gained significant attention for their high-quality novel view rendering, motivating research to address real-world challenges. A critical issue is the camera motion blur caused by movement during exposure, which hinders accurate 3D scene reconstruction. In this study, we propose CoMoGaussian, a Continuous Motion-Aware Gaussian Splatting that reconstructs precise 3D scenes from motion-blurred images while maintaining real-time rendering speed. Considering the complex motion patterns inherent in real-world camera movements, we predict continuous camera trajectories using neural ordinary differential equations (ODEs). To ensure accurate modeling, we employ rigid body transformations, preserving the shape and size of the object but rely on the discrete integration of sampled frames. To better approximate the continuous nature of motion blur, we introduce a continuous motion refinement (CMR) transformation that refines rigid transformations by incorporating additional learnable parameters. By revisiting fundamental camera theory and leveraging advanced neural ODE techniques, we achieve precise modeling of continuous camera trajectories, leading to improved reconstruction accuracy. Extensive experiments demonstrate state-of-the-art performance both quantitatively and qualitatively on benchmark datasets, which include a wide range of motion blur scenarios, from moderate to extreme blur.
+      </p>
+    </div>
+  </section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-max">
+        <h2 class="title is-3">Method</h2>
+        <br>
+        <img alt="Architecture" src="./static/images/figure2.png" width="100%"/>
+      </div>
+    </div>
+    <div class="content has-text-justified">
+      <br>
+      <p>
+        First, we apply neural ordinary differential equations (ODEs) to model continuous camera movement during exposure time. By continuously modeling the camera trajectory in 3D space, we introduce a model that is fundamentally different from existing methods. Second, we continuously model rigid body transformation over time to accurately capture the shape and size of the static subject throughout the camera movement. By leveraging a continuous representation of rigid motion, our approach better accounts for subtle variations in trajectory, leading to more precise reconstruction of static structures. Third, we introduce a continuous motion refinement (CMR) transformation, which enhances rigid motion modeling by incorporating learnable transformations, enabling more accurate approximation of motion blur trajectories.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-max">
+        <h2 class="title is-3">Estimated Camera Motion Trajectory</h2>
+        <br>
+        <img alt="Architecture" src="./static/images/kernel_visualize.png" width="100%"/>
+      </div>
+    </div>
+    <div class="content has-text-justified">
+      <br>
+      <p>
+        The camera trajectory for a single motion-blurred image is represented by colored cones, with the cone's color gradually transitioning from red to light purple as time progresses from $t_{0}$ to $t_{N}$. The visualized trajectories confirm that the camera paths generated by CoMoGaussian are smoothly continuous.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-three-fifths">
+          <h2 class="title is-3">Comparison with State-of-the-Arts</h2>
+          <p class="subtitle has-text-centered">
+            <br>
+            Please click the videos for better view.
+          </p>
+        </div>
+      </div>
+      <div class="columns is-centered">
+        <div class="column is-one-third">
+          <div class="video-compare-container" id="materialsDiv1">
+            <video class="video" id="materials1" loop playsinline autoPlay muted src="./static/videos/MipSplatting_Ball.mp4" onplay="resizeAndPlay(this)"></video>
+            <canvas height=0 class="videoMerge" id="materials1Merge" style="border-radius: 10px;"></canvas>
+          </div>
+        </div>
+
+        <div class="column is-one-third">
+          <div class="video-compare-container" id="materialsDiv2">
+            <video class="video" id="materials2" loop playsinline autoPlay muted src="./static/videos/MipSplatting_Pool.mp4" onplay="resizeAndPlay(this)"></video>
+            <canvas height=0 class="videoMerge" id="materials2Merge" style="border-radius: 10px;"></canvas>
+          </div>
+        </div>
+
+        <div class="column is-one-third">
+          <div class="video-compare-container" id="materialsDiv3">
+            <video class="video" id="materials3" loop playsinline autoPlay muted src="./static/videos/MipSplatting_Bench.mp4" onplay="resizeAndPlay(this)"></video>
+            <canvas height=0 class="videoMerge" id="materials3Merge" style="border-radius: 10px;"></canvas>
+          </div>
+        </div>
+      </div>
+      
+      <div class="columns is-centered">
+        <div class="column is-one-third">
+          <div class="video-compare-container" id="materialsDiv4">
+            <video class="video" id="materials4" loop playsinline autoPlay muted src="./static/videos/BADGaussians_Coffee.mp4" onplay="resizeAndPlay(this)"></video>
+            <canvas height=0 class="videoMerge" id="materials4Merge" style="border-radius: 10px;"></canvas>
+          </div>
+        </div>
+
+        <div class="column is-one-third">
+          <div class="video-compare-container" id="materialsDiv5">
+            <video class="video" id="materials5" loop playsinline autoPlay muted src="./static/videos/BADGaussians_Buick.mp4" onplay="resizeAndPlay(this)"></video>
+            <canvas height=0 class="videoMerge" id="materials5Merge" style="border-radius: 10px;"></canvas>
+          </div>
+        </div>
+
+        <div class="column is-one-third">
+          <div class="video-compare-container" id="materialsDiv6">
+            <video class="video" id="materials6" loop playsinline autoPlay muted src="./static/videos/BADGaussians_Girl.mp4" onplay="resizeAndPlay(this)"></video>
+            <canvas height=0 class="videoMerge" id="materials6Merge" style="border-radius: 10px;"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns is-centered">
+        <div class="column is-one-third">
+          <div class="video-compare-container" id="materialsDiv7">
+            <video class="video" id="materials7" loop playsinline autoPlay muted src="./static/videos/Deblurring3DGS_Trolley.mp4" onplay="resizeAndPlay(this)"></video>
+            <canvas height=0 class="videoMerge" id="materials7Merge" style="border-radius: 10px;"></canvas>
+          </div>
+        </div>
+
+        <div class="column is-one-third">
+          <div class="video-compare-container" id="materialsDiv8">
+            <video class="video" id="materials8" loop playsinline autoPlay muted src="./static/videos/Deblurring3DGS_Camellia.mp4" onplay="resizeAndPlay(this)"></video>
+            <canvas height=0 class="videoMerge" id="materials8Merge" style="border-radius: 10px;"></canvas>
+          </div>
+        </div>
+
+        <div class="column is-one-third">
+          <div class="video-compare-container" id="materialsDiv9">
+            <video class="video" id="materials9" loop playsinline autoPlay muted src="./static/videos/Deblurring3DGS_Stone_Lantern.mp4" onplay="resizeAndPlay(this)"></video>
+            <canvas height=0 class="videoMerge" id="materials9Merge" style="border-radius: 10px;"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns is-centered">
+        <div class="column is-one-third">
+          <div class="video-compare-container" id="materialsDiv10">
+            <video class="video" id="materials10" loop playsinline autoPlay muted src="./static/videos/BAGS_Factory.mp4" onplay="resizeAndPlay(this)"></video>
+            <canvas height=0 class="videoMerge" id="materials10Merge" style="border-radius: 10px;"></canvas>
+          </div>
+        </div>
+
+        <div class="column is-one-third">
+          <div class="video-compare-container" id="materialsDiv11">
+            <video class="video" id="materials11" loop playsinline autoPlay muted src="./static/videos/BAGS_Dragon.mp4" onplay="resizeAndPlay(this)"></video>
+            <canvas height=0 class="videoMerge" id="materials11Merge" style="border-radius: 10px;"></canvas>
+          </div>
+        </div>
+
+        <div class="column is-one-third">
+          <div class="video-compare-container" id="materialsDiv12">
+            <video class="video" id="materials12" loop playsinline autoPlay muted src="./static/videos/BAGS_Postbox.mp4" onplay="resizeAndPlay(this)"></video>
+            <canvas height=0 class="videoMerge" id="materials12Merge" style="border-radius: 10px;"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- 
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+     <pre><code>@misc{lee2024crimgscontinuousrigidmotionaware,
+      title={CRiM-GS: Continuous Rigid Motion-Aware Gaussian Splatting from Motion-Blurred Images}, 
+      author={Jungho Lee and Donghyeong Kim and Dogyoon Lee and Suhwan Cho and Minhyeok Lee and Sangyoun Lee},
+      year={2024},
+      eprint={2407.03923},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2407.03923}, 
+}</code></pre>
+  </div>
+</section> -->
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+     <pre><code>@article{lee2025comogaussian,
+  title={CoMoGaussian: Continuous Motion-Aware Gaussian Splatting from Motion-Blurred Images},
+  author={Lee, Jungho and Kim, Donghyeong and Lee, Dogyoon and Cho, Suhwan and Lee, Minhyeok and Lee, Wonjoon and Kim, Taeoh and Wee, Dongyoon and Lee, Sangyoun},
+  journal={arXiv preprint arXiv:2503.05332},
+  year={2025}
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            We thank the authors of <a
+            href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> that kindly open sourced the template of this website.
+            The html script of video comparison is borrowed from <a
+            href="https://dorverbin.github.io/refnerf/">Ref-NeRF</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.video-compare-container').forEach(function (container, index) {
+      console.log("Index of the container:", index);
+      container.addEventListener('click', function () {
+        if (index % 3 === 0) {
+          this.classList.toggle('expand-right');
+        } else if (index % 3 === 1) {
+          this.classList.toggle('expanded');
+        } else if (index % 3 === 2) {
+          this.classList.toggle('expand-left');
+        } 
+        
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

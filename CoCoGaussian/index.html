@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="google-site-verification" content="OyeXgTR1QZbSmeTOwBBQTD__YH38MO3HfwH364OIAdQ" />
+  <meta charset="utf-8">
+  <meta name="description"
+        content="CoCoGaussian: Leveraging Circle of Confusion for Gaussian Splatting from Defocused Images">
+  <meta name="keywords" content="VastGaussian">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CoCoGaussian: Leveraging Circle of Confusion for Gaussian Splatting from Defocused Images</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/icon.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <script src="./static/js/video_comparison.js"></script>
+
+  <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+
+  
+</script>        
+  
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+});
+</script>
+
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body", style="padding-bottom: 0rem;">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-2 publication-title">CoCoGaussian: Leveraging Circle of Confusion for Gaussian Splatting from Defocused Images</h1>
+          <div class="is-size-5 publication-authors">
+
+            <span class="author-block">
+              <a href="https://Jho-Yonsei.github.io">Jungho Lee</a><sup>1</sup>&nbsp;&nbsp;
+            </span>
+
+            <span class="author-block">
+              <a href="https://suhwan-cho.github.io">Suhwan Cho</a><sup>1</sup>&nbsp;&nbsp;
+            </span>
+
+            <span class="author-block">
+              <a href="https://taeoh-kim.github.io">Taeoh Kim</a><sup>2</sup>&nbsp;&nbsp;
+            </span>
+
+            <span class="author-block">
+              <a href="https://scholar.google.co.kr/citations?user=RJZ6W24AAAAJ&hl=en">Ho-Deok Jang</a><sup>2</sup>&nbsp;&nbsp;
+            </span>
+      
+            <span class="author-block">
+              <a href="https://hydragon.co.kr">Minhyeok Lee</a><sup>1</sup>&nbsp;&nbsp;
+            </span>
+            <br>
+
+            <span class="author-block">
+              <a href="https://scholar.google.co.kr/citations?user=1uQa-hoAAAAJ&hl=ko">Geonho Cha</a><sup>2</sup>&nbsp;&nbsp;
+            </span>
+
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=oEKX8h0AAAAJ&hl=ko">Dongyoon Wee</a><sup>2</sup>&nbsp;&nbsp;
+            </span>
+
+            <span class="author-block">
+              <a href="https://dogyoonlee.github.io/">Dogyoon Lee</a><sup>1</sup>&nbsp;&nbsp;
+            </span>
+            
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=b7A10VYAAAAJ&hl=ko">Sangyoun Lee</a><sup>1</sup>
+            </span>
+
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block", style="color:#726f6f"><sup>1</sup>Yonsei University&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <span class="author-block", style="color:#726f6f"><sup>2</sup>NAVER Cloud&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          </div>
+
+          <div class="is-size-4 publication-authors">
+            <span class="author-block", style="color:#523bb8">CVPR 2025</span>
+          </div>
+          
+          
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2412.16028"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/Jho-Yonsei/CoCoGaussian"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/Jho-Yonsei/CoCoGaussian"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Datasets</span>
+                  </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/rendering.mp4"
+                type="video/mp4">
+      </video>
+    </div>
+  </div>
+</section> -->
+
+<section class="section">
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-three-fifths">
+      <figure>
+        <img src="./static/images/teaser.png" alt="PDF Thumbnail" height="100%">
+        <br><br>
+        <figcaption>We propose CoCoGaussian, a framework for 3D scene reconstruction from defocused images. By modeling the circle of confusion as Gaussians, CoCoGaussian enables customization of defocused images through depth of field adjustments or focus plane changes, while sharp images can be rendered by excluding the circle of confusion.</figcaption>
+      </figure>
+    </div>
+  </div>
+</div>
+</section>
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+      </div>
+    </div>
+    <div class="content has-text-justified">
+      <br>
+      <p>
+        3D Gaussian Splatting (3DGS) has attracted significant attention for its high-quality novel view rendering, inspiring research to address real-world challenges. While conventional methods depend on sharp images for accurate scene reconstruction, real-world scenarios are often affected by defocus blur due to finite depth of field, making it essential to account for realistic 3D scene representation. In this study, we propose CoCoGaussian, a Circle of Confusion-aware Gaussian Splatting that enables precise 3D scene representation using only defocused images. CoCoGaussian addresses the challenge of defocus blur by modeling the Circle of Confusion (CoC) through a physically grounded approach based on the principles of photographic defocus. Exploiting 3D Gaussians, we compute the CoC diameter from depth and learnable aperture information, generating multiple Gaussians to precisely capture the CoC shape. Furthermore, we introduce a learnable scaling factor to enhance robustness and provide more flexibility in handling unreliable depth in scenes with reflective or refractive surfaces. Experiments on both synthetic and real-world datasets demonstrate that CoCoGaussian achieves state-of-the-art performance across multiple benchmarks.
+      </p>
+    </div>
+  </section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-max">
+        <h2 class="title is-3">Method</h2>
+        <br>
+        <img alt="Architecture" src="./static/images/figure2.png" width="100%"/>
+      </div>
+    </div>
+    <div class="content has-text-justified">
+      <br>
+      <p>
+        In this paper, we propose CoCoGaussian, a framework that leverages physically grounded photographic principles to model defocus blur for 3D scene reconstruction. By incorporating an aperture to compute the Circle of Confusion (CoC) diameter based on depth and learnable aperture information, CoCoGaussian generates 3D Gaussians to form the CoC shape, accurately capturing shallow depth of field effects. To handle challenges such as unreliable depths caused by reflection or refraction, we introduce a learnable scaling factor to adaptively constrain Gaussians within the CoC radius, enhancing flexibility and robustness. This approach not only enables the reconstruction of sharp 3D scenes from defocused images but also allows customizable depth of field and dynamic focus plane adjustments for flexible scene visualization.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-max">
+        <h2 class="title is-3">Depth of Field Customization</h2>
+        <br>
+        <img alt="Architecture" src="./static/images/customize.png" width="100%"/>
+      </div>
+    </div>
+    <div class="content has-text-justified">
+      <br>
+      <p>
+        Visualization of Aperture parameter and Focus Plane Customization. The top row of images decreases the aperture parameter $K$ from left to right, while the bottom row moves the focus plane $d_{F}$ further from the camera from left to right.
+      </p>
+    </div>
+</div>
+</section>
+
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-three-fifths">
+          <h2 class="title is-3">Comparison with State-of-the-Arts</h2>
+          <p class="subtitle has-text-centered">
+            <br>
+            Please click the videos for better view.
+          </p>
+        </div>
+      </div>
+      <div class="columns is-centered">
+        <div class="column is-one-third">
+          <div class="video-compare-container" id="materialsDiv1">
+            <video class="video" id="materials1" loop playsinline autoPlay muted src="./static/videos/Comparison_3DGS_caps.mp4" onplay="resizeAndPlay(this)"></video>
+            <canvas height=0 class="videoMerge" id="materials1Merge" style="border-radius: 10px;"></canvas>
+          </div>
+        </div>
+
+        <div class="column is-one-third">
+          <div class="video-compare-container" id="materialsDiv2">
+            <video class="video" id="materials2" loop playsinline autoPlay muted src="./static/videos/Comparison_Deblurring3DGS_amiya.mp4" onplay="resizeAndPlay(this)"></video>
+            <canvas height=0 class="videoMerge" id="materials2Merge" style="border-radius: 10px;"></canvas>
+          </div>
+        </div>
+
+        <div class="column is-one-third">
+          <div class="video-compare-container" id="materialsDiv3">
+            <video class="video" id="materials3" loop playsinline autoPlay muted src="./static/videos/Comparison_BAGS_books.mp4" onplay="resizeAndPlay(this)"></video>
+            <canvas height=0 class="videoMerge" id="materials3Merge" style="border-radius: 10px;"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns is-centered">
+        <div class="column is-one-third">
+          <div class="video-compare-container" id="materialsDiv4">
+            <video class="video" id="materials4" loop playsinline autoPlay muted src="./static/videos/Comparison_3DGS_sausage.mp4" onplay="resizeAndPlay(this)"></video>
+            <canvas height=0 class="videoMerge" id="materials4Merge" style="border-radius: 10px;"></canvas>
+          </div>
+        </div>
+
+        <div class="column is-one-third">
+          <div class="video-compare-container" id="materialsDiv5">
+            <video class="video" id="materials5" loop playsinline autoPlay muted src="./static/videos/Comparison_Deblurring3DGS_coral.mp4" onplay="resizeAndPlay(this)"></video>
+            <canvas height=0 class="videoMerge" id="materials5Merge" style="border-radius: 10px;"></canvas>
+          </div>
+        </div>
+
+        <div class="column is-one-third">
+          <div class="video-compare-container" id="materialsDiv6">
+            <video class="video" id="materials6" loop playsinline autoPlay muted src="./static/videos/Comparison_BAGS_cupcake.mp4" onplay="resizeAndPlay(this)"></video>
+            <canvas height=0 class="videoMerge" id="materials6Merge" style="border-radius: 10px;"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-three-fifths">
+          <br><br>
+          <h2 class="title is-3">Depth of Field Customization</h2>
+          <!-- <p class="subtitle has-text-centered">
+            <br>
+            Please click the videos for better view.
+          </p> -->
+        </div>
+      </div>
+
+      <div class="columns is-centered">
+        <div class="column is-half">
+          <p class="subtitle has-text-centered">
+            <br>
+            Adjusting Aperture Size
+          </p>
+          <video class="video" id="materials7" loop playsinline autoPlay muted src="./static/videos/DoF_Customize_Trolley.mp4" onplay="resizeAndPlay(this)"></video>
+        </div>
+        <div class="column is-half">
+          <p class="subtitle has-text-centered">
+            <br>
+            Adjusting Aperture Size and Focus Plane
+          </p>
+          <video class="video" id="materials8" loop playsinline autoPlay muted src="./static/videos/DoF_FocusPlane_Customize_Caps.mp4" onplay="resizeAndPlay(this)"></video>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- <section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+     <pre><code>@article{lee2024cocogaussian,
+    title={CoCoGaussian: Leveraging Circle of Confusion for Gaussian Splatting from Defocused Images}, 
+    author={Jungho Lee and Suhwan Cho and Taeoh Kim and Ho-Deok Jang and Minhyeok Lee and Geonho Cha and Dongyoon Wee and Dogyoon Lee and Sangyoun Lee},
+    journal={arXiv preprint arXiv:2412.16028},
+    year={2024}
+}</code></pre>
+  </div>
+</section> -->
+
+
+<!-- <section class="section">
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-three-fifths">
+      <h2 class="title is-3">Additional Rendering Results</h2>
+      <p class="subtitle has-text-centered">
+        Please click the videos for better view.
+      </p>
+    </div>
+  </div>
+  <div class="columns is-centered has-text-centered">
+    <div class="columns is-centered">
+      <div class="column is-one-fifth">
+        <div class="video-compare-container" id="materialsDiv7">
+          <video class="video" id="materials7" loop playsinline autoPlay muted src="./static/videos/output/basket.mp4" onplay="resizeAndPlay(this)"></video>
+          <canvas height=0 class="videoMerge" id="materials7Merge" style="border-radius: 10px;"></canvas>
+        </div>
+      </div>
+
+      <div class="column is-one-fifth">
+        <div class="video-compare-container" id="materialsDiv8">
+          <video class="video" id="materials8" loop playsinline autoPlay muted src="./static/videos/output/puppet.mp4" onplay="resizeAndPlay(this)"></video>
+          <canvas height=0 class="videoMerge" id="materials8Merge" style="border-radius: 10px;"></canvas>
+        </div>
+      </div>
+
+      <div class="column is-one-fifth">
+        <div class="video-compare-container" id="materialsDiv9">
+          <video class="video" id="materials9" loop playsinline autoPlay muted src="./static/videos/output/coffee.mp4" onplay="resizeAndPlay(this)"></video>
+          <canvas height=0 class="videoMerge" id="materials9Merge" style="border-radius: 10px;"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="columns is-centered has-text-centered">
+    <div class="columns is-centered">
+      <div class="column is-one-fifth">
+        <div class="video-compare-container" id="materialsDiv10">
+          <video class="video" id="materials10" loop playsinline autoPlay muted src="./static/videos/output/tanabata.mp4" onplay="resizeAndPlay(this)"></video>
+          <canvas height=0 class="videoMerge" id="materials10Merge" style="border-radius: 10px;"></canvas>
+        </div>
+      </div>
+
+      <div class="column is-one-fifth">
+        <div class="video-compare-container" id="materialsDiv11">
+          <video class="video" id="materials11" loop playsinline autoPlay muted src="./static/videos/output/pool.mp4" onplay="resizeAndPlay(this)"></video>
+          <canvas height=0 class="videoMerge" id="materials11Merge" style="border-radius: 10px;"></canvas>
+        </div>
+      </div>
+
+      <div class="column is-one-fifth">
+        <div class="video-compare-container" id="materialsDiv12">
+          <video class="video" id="materials12" loop playsinline autoPlay muted src="./static/videos/output/cozy2room.mp4" onplay="resizeAndPlay(this)"></video>
+          <canvas height=0 class="videoMerge" id="materials12Merge" style="border-radius: 10px;"></canvas>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</section> -->
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+     <pre><code>@inproceedings{lee2025cocogaussian,
+  title={CoCoGaussian: Leveraging Circle of Confusion for Gaussian Splatting from Defocused Images},
+  author={Lee, Jungho and Cho, Suhwan and Kim, Taeoh and Jang, Ho-Deok and Lee, Minhyeok and Cha, Geonho and Wee, Dongyoon and Lee, Dogyoon and Lee, Sangyoun},
+  booktitle={Proceedings of the Computer Vision and Pattern Recognition Conference},
+  pages={16101--16110},
+  year={2025}
+}</code></pre>
+  </div>
+</section>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            We thank the authors of <a
+            href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> that kindly open sourced the template of this website.
+            The html script of video comparison is borrowed from <a
+            href="https://dorverbin.github.io/refnerf/">Ref-NeRF</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.video-compare-container').forEach(function (container, index) {
+      console.log("Index of the container:", index);
+      container.addEventListener('click', function () {
+        if (index % 3 === 0) {
+          this.classList.toggle('expand-right');
+        } else if (index % 3 === 1) {
+          this.classList.toggle('expanded');
+        } else if (index % 3 === 2) {
+          this.classList.toggle('expand-left');
+        } 
+        
+      });
+    });
+  });
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.video-compare-container-half').forEach(function (container, index) {
+      console.log("Index of the container:", index);
+      container.addEventListener('click', function () {
+        if (index % 2 === 0) {
+          this.classList.toggle('expanded');
+        } else if (index % 2 === 1) {
+          this.classList.toggle('expanded');
+        } 
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

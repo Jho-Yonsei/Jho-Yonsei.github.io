@@ -1,0 +1,6 @@
+@article{cho2023treating,
+  title={Treating Motion as Option with Output Selection for Unsupervised Video Object Segmentation},
+  author={Cho, Suhwan and Lee, Minhyeok and Lee, Jungho and Cho, MyeongAh and Lee, Sangyoun},
+  journal={arXiv preprint arXiv:2309.14786},
+  year={2023}
+}

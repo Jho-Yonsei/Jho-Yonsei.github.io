@@ -1,0 +1,6 @@
+@article{lee2022leveraging,
+  title={Leveraging Spatio-Temporal Dependency for Skeleton-Based Action Recognition},
+  author={Lee, Jungho and Lee, Minhyeok and Cho, Suhwan and Woo, Sungmin and Lee, Sangyoun},
+  journal={arXiv preprint arXiv:2212.04761},
+  year={2022}
+}

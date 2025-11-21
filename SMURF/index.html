@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="SMURF: Continuous Dynamics for Motion-Deblurring Radiance Fields">
+  <meta name="keywords" content="VastGaussian">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SMURF: Continuous Dynamics for Motion-Deblurring Radiance Fields</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/icon.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <script src="./static/js/video_comparison.js"></script>
+
+  <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+
+  
+</script>        
+  
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+});
+</script>
+
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body", style="padding-bottom: 0rem;">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-2 publication-title">SMURF: Continuous Dynamics for<br>Motion-Deblurring Radiance Fields</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://Jho-Yonsei.github.io">Jungho Lee</a>&nbsp;&nbsp;&nbsp;
+            </span>
+
+            <span class="author-block">
+              <a href="https://dogyoonlee.github.io/">Dogyoon Lee</a>&nbsp;&nbsp;&nbsp;
+            </span>
+
+            <span class="author-block">
+              <a href="https://hydragon.co.kr">Minhyeok Lee</a>&nbsp;&nbsp;&nbsp;
+            </span>
+
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=BaFYtwgAAAAJ&hl=ko">DongHyeong Kim</a>&nbsp;&nbsp;&nbsp;
+            </span>
+
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=b7A10VYAAAAJ&hl=ko">Sangyoun Lee</a><sup>†</sup>
+            </span>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block", style="color:#726f6f">Yonsei University&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block", style="font-size: 15px;color:#726f6f"><sup>†&nbsp;</sup>Corresponding author </span>
+          </div>
+
+          <div class="is-size-4 publication-authors">
+            <span class="author-block", style="color:#523bb8">CVPR 2025 - 2nd Workshop on Neural Fields Beyond Conventional Cameras</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2403.07547"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="paper/SMURF_FULL.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>Full Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/Jho-Yonsei/SMURF"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/Jho-Yonsei/SMURF"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Datasets</span>
+                  </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/rendering.mp4"
+                type="video/mp4">
+      </video>
+    </div>
+  </div>
+</section> -->
+
+<section class="section">
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-three-fifths">
+      <figure>
+        <img src="./static/images/smurf_figure_1.png" alt="PDF Thumbnail" height="100%">
+        <br><br>
+        <figcaption>A blurry image $I_{blur}$ is acquired as the camera moves over the exposure time ($t_{0}\sim t_{\mathcal{N}}$), with images $I_{t}$ captured at each camera pose being composited together. Our approach iteratively estimates warped rays along the sequential camera motion trajectory.</figcaption>
+      </figure>
+    </div>
+  </div>
+</div>
+</section>
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+      </div>
+    </div>
+    <div class="content has-text-justified">
+      <p>
+        <br>Neural radiance fields (NeRF) has attracted considerable attention for their exceptional ability in synthesizing novel views with high fidelity. However, the presence of motion blur, resulting from slight camera movements during extended shutter exposures, poses a significant challenge, potentially compromising the quality of the reconstructed 3D scenes. While recent studies have addressed this issue, they do not consider the continuous dynamics of camera movements during image acquisition, leading to inaccurate scene reconstruction. To effectively handle this issue, we propose sequential motion understanding radiance fields (SMURF), a novel approach that employs neural ordinary differential equations (Neural-ODEs) to model continuous camera motion and leverages the explicit volumetric representation method for robustness to motion-blurred input images. The core idea of the SMURF is continuous motion blurring kernel (CMBK), a unique module designed to model a continuous camera movements for processing blurry inputs. Our model, rigorously evaluated against benchmark datasets, demonstrates state-of-the-art performance both quantitatively and qualitatively.
+      </p>
+    </div>
+  </section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-max">
+        <h2 class="title is-3">Method</h2>
+        <br>
+        <img alt="Architecture" src="./static/images/smurf_figure3.png" width="100%"/>
+      </div>
+    </div>
+    <div class="content has-text-justified">
+      <br>
+      <p>
+        The CMBK encoder $\mathcal{E}_{\theta}$ transforms the embedded 2D pixel location $\mathbf{p}$ of the initial ray and view index into a latent feature. This feature is extended into an IVP with a parameterized derivative function $f_{\phi}$ in the latent space. Then, it is solved by Neural-ODEs along with given time $t$ and a chrono-view embedding function $\mathbf{\Psi}$, obtaining latent features for all warped rays. These features are transformed into changes of the ray through a decoder $\mathcal{D}_{\xi}$, and we get the warped rays by applying them to the initial ray. These rays are rendered into 2D pixel colors through a 3D grid-based method, and a blurry color is acquired by summing up the colors with weights from the decoder.<br><br>
+      </p>
+    </div>
+    <img alt="Architecture" src="./static/images/smurf_figure_appendix_1.png" width="100%"/>
+    <div class="content has-text-justified">
+      <br>
+      <p>
+        We assume that camera motion encompasses inherent dynamics with a unique solution. The assumed solution is represented by the lighter circles in the left plots of (b). Rather than implementing the inherent dynamics in a simple physical space, we refine them within a latent space with parametric learning. The continuous dynamics of CMBK involve transforming the pixel coordinates corresponding to the ray into latent features via a parameterized encoder $\mathcal{E}_{\theta}$, and a unique numerical solution is obtained by solving the initial value problem on the latent space through a neural ordinary differential equation.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- <section class="section">
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-three-fifths">
+      <h2 class="title is-3">Performance Comparison</h2>
+      <img alt="Architecture" src="./static/images/smurf_figure2_real.png" width="100%"/>
+    </div>
+  </div>
+</div>
+</section> -->
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-three-fifths">
+          <h2 class="title is-3">Comparison with State-of-the-Arts</h2>
+          <p class="subtitle has-text-centered">
+            <br>
+            Please click the videos for better view.
+          </p>
+        </div>
+      </div>
+      <div class="columns is-centered">
+        <div class="column is-one-third">
+          <div class="video-compare-container" id="materialsDiv1">
+            <video class="video" id="materials1" loop playsinline autoPlay muted src="./static/videos/comparison_smurf_3dgs.mp4" onplay="resizeAndPlay(this)"></video>
+            <canvas height=0 class="videoMerge" id="materials1Merge" style="border-radius: 10px;"></canvas>
+          </div>
+        </div>
+
+        <div class="column is-one-third">
+          <div class="video-compare-container" id="materialsDiv2">
+            <video class="video" id="materials2" loop playsinline autoPlay muted src="./static/videos/comparison_smurf_nerf.mp4" onplay="resizeAndPlay(this)"></video>
+            <canvas height=0 class="videoMerge" id="materials2Merge" style="border-radius: 10px;"></canvas>
+          </div>
+        </div>
+
+        <div class="column is-one-third">
+          <div class="video-compare-container" id="materialsDiv3">
+            <video class="video" id="materials3" loop playsinline autoPlay muted src="./static/videos/comparison_smurf_pdrf.mp4" onplay="resizeAndPlay(this)"></video>
+            <canvas height=0 class="videoMerge" id="materials3Merge" style="border-radius: 10px;"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns is-centered">
+        <div class="column is-one-third">
+          <div class="video-compare-container" id="materialsDiv4">
+            <video class="video" id="materials4" loop playsinline autoPlay muted src="./static/videos/comparison_smurf_dpnerf.mp4" onplay="resizeAndPlay(this)"></video>
+            <canvas height=0 class="videoMerge" id="materials4Merge" style="border-radius: 10px;"></canvas>
+          </div>
+        </div>
+
+        <div class="column is-one-third">
+          <div class="video-compare-container" id="materialsDiv5">
+            <video class="video" id="materials5" loop playsinline autoPlay muted src="./static/videos/comparison_smurf_badnerf.mp4" onplay="resizeAndPlay(this)"></video>
+            <canvas height=0 class="videoMerge" id="materials5Merge" style="border-radius: 10px;"></canvas>
+          </div>
+        </div>
+
+        <div class="column is-one-third">
+          <div class="video-compare-container" id="materialsDiv6">
+            <video class="video" id="materials6" loop playsinline autoPlay muted src="./static/videos/comparison_smurf_deblurnerf.mp4" onplay="resizeAndPlay(this)"></video>
+            <canvas height=0 class="videoMerge" id="materials6Merge" style="border-radius: 10px;"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+     <pre><code>@article{lee2024smurf,
+      title={SMURF: Continuous Dynamics for Motion-Deblurring Radiance Fields},
+      author={Lee, Jungho and Lee, Dogyoon and Lee, Minhyeok and Kim, Donghyung and Lee, Sangyoun},
+      journal={arXiv preprint arXiv:2403.07547},
+      year={2024}
+    }</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            We thank the authors of <a
+            href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> that kindly open sourced the template of this website.
+            The html script of video comparison is borrowed from <a
+            href="https://dorverbin.github.io/refnerf/">Ref-NeRF</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.video-compare-container').forEach(function (container, index) {
+      console.log("Index of the container:", index);
+      container.addEventListener('click', function () {
+        if (index % 3 === 0) {
+          this.classList.toggle('expand-right');
+        } else if (index % 3 === 1) {
+          this.classList.toggle('expanded');
+        } else if (index % 3 === 2) {
+          this.classList.toggle('expand-left');
+        } 
+        
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
