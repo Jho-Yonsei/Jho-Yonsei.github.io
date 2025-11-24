@@ -453,8 +453,40 @@ function changeScene(sceneId, droidValue, longValue, swiftValue, btn) {
   </div>
 </section> -->
 
-
 <script>
+window.addEventListener('DOMContentLoaded', () => {
+  mv1 = document.getElementById('modelViewerComparison1');
+  mv2 = document.getElementById('modelViewerComparison2');
+  mv3 = document.getElementById('modelViewerComparison3');
+
+  viewers = [mv1, mv2, mv3];
+  activeViewer = mv1;
+
+  viewers.forEach(v => {
+    v.addEventListener('load', () => {
+      resetCamerasToInitial(currentSceneId);
+    });
+
+    v.addEventListener('pointerdown', () => {
+      activeViewer = v;
+    });
+
+    v.addEventListener('camera-change', (e) => {
+      if (e.target !== activeViewer) return;
+      syncFrom(activeViewer);
+    });
+  });
+
+  // 👉 여기가 핵심: 페이지 처음 들어왔을 때 00 버튼을 자동 클릭
+  const firstBtn = document.querySelector('.scene-btn');
+  if (firstBtn) {
+    firstBtn.click();
+  }
+});
+</script>
+
+
+<!-- <script>
   document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.video-compare-container').forEach(function (container, index) {
       console.log("Index of the container:", index);
@@ -470,7 +502,7 @@ function changeScene(sceneId, droidValue, longValue, swiftValue, btn) {
       });
     });
   });
-</script>
+</script> -->
 
 </body>
 </html>
