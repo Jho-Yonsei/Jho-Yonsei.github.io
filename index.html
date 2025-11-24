@@ -23,7 +23,7 @@
               </p>
                 I am a Ph.D candidate at <a href="https://www.yonsei.ac.kr">Yonsei University</a> in <a href="https://en.wikipedia.org/wiki/Seoul">Seoul</a>, where I work on computer vision and machine learning. I was a research intern at <a href="https://www.navercloudcorp.com/">NAVER Cloud</a> and participating in a Human Avatar Generation project.
               <p>
-                My primary areas of research are 3D neural rendering for real-world scenarios and human avatar generation with 3D Gaussian Splatting (3DGS) and Neural Radiance Fields (NeRF).
+                My primary areas of research are 3D computer vision including 3D reconstruction and neural rendering.
               </p>
               <p>
                 I'm always open to collaborations or suggestions. Please feel free to contact me if you have any questions or suggestions. :)
@@ -66,38 +66,126 @@
             <tr>
             <td style="padding:20px;width:100%;vertical-align:middle">
               <heading>Research</heading>
-              <!-- <p>
-                I am interested in computer vision and graphics. More specifically, I enjoy working on methods that use domain-specific knowledge of geometry, graphics, and physics, to improve computer vision systems.
-              </p> -->
+              <p>
+                My first-author papers are highlighted with a yellow background.
+              </p>
             </td>
           </tr>
         </tbody></table>
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-          
     
-    <tr onmouseout="monoclue_stop()" onmouseover="monoclue_start()">
+    
+    <tr bgcolor="#ffffd0">
       <td style="padding:20px;width:25%;vertical-align:middle">
-        <div class="one">
-          <div class="two" id='monoclue_image'><video  width=100% height=100% muted autoplay loop>
-          <source src="images/monoclue/monoclue_after.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-          </video></div>
-          <video  width=100% height=100% muted autoplay loop>
-            <source src="images/monoclue/monoclue_before_.mp4" type="video/mp4">
+      <style>
+        .one {
+          position: relative;
+          width: 100%;
+        }
+
+        .one video {
+          display: block;
+          width: 100%;
+        }
+
+        .one .two {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          opacity: 0;
+          transition: opacity 0.3s;
+        }
+
+        .one:hover .two {
+          opacity: 1;
+        }
+      </style>
+
+      <div class="one">
+        <div class="two">
+          <video width="100%" height="100%" muted autoplay loop>
+            <source src="images/swiftvggt/swiftvggt_after.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
         </div>
-        <script type="text/javascript">
-          function monoclue_start() {
-            document.getElementById('monoclue_image').style.opacity = "1";
-          }
 
-          function monoclue_stop() {
-            document.getElementById('monoclue_image').style.opacity = "0";
-          }
-          monoclue_stop()
-        </script>
-      </td>
+        <video width="100%" height="100%" muted autoplay loop>
+          <source src="images/swiftvggt/swiftvggt_before.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+    </td>
+
+    <td style="padding:20px;width:75%;vertical-align:middle">
+      <a href="https://Jho-Yonsei.github.io/SwiftVGGT">
+        <papertitle>SwiftVGGT: A Scalable Visual Geometry Grounded Transformer for Large-Scale Scenes</papertitle>
+      </a>
+      <br>
+      <strong>Jungho Lee</strong>,
+      <a href="https://hydragon.co.kr">Minhyeok Lee</a>,
+      Sunghun Yang,
+      Minseok Kang,
+      Sangyoun Lee
+      <br>
+      <em>arXiv</em>
+      <br>
+      <a href="https://Jho-Yonsei.github.io/SwiftVGGT">project page</a>
+      /
+      <a href="https://arxiv.org/abs/">arXiv</a>
+      /
+      <a href="https://github.com/Jho-Yonsei/SwiftVGGT">code</a>
+      <p></p>
+      <p>
+        We propose <strong>SwiftVGGT</strong>, a training-free method that significantly reduce inference time while preserving high-quality dense 3D reconstruction.
+      </p>
+    </td>
+  </tr>
+
+    
+    <tr>
+      <td style="padding:20px;width:25%;vertical-align:middle">
+      <style>
+        .one {
+          position: relative;
+          width: 100%;
+        }
+
+        .one video {
+          display: block;
+          width: 100%;
+        }
+
+        .one .two {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          opacity: 0;
+          transition: opacity 0.3s;
+        }
+
+        .one:hover .two {
+          opacity: 1;
+        }
+      </style>
+
+      <div class="one">
+        <div class="two">
+          <video width="100%" height="100%" muted autoplay loop>
+            <source src="images/monoclue/monoclue_after.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <video width="100%" height="100%" muted autoplay loop>
+          <source src="images/monoclue/monoclue_before_.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </td>
+
       <td style="padding:20px;width:75%;vertical-align:middle">
         <a href="https://arxiv.org/abs/2511.07862">
           <papertitle>MonoCLUE : Object-Aware Clustering Enhances Monocular 3D Object Detection</papertitle>
@@ -115,7 +203,7 @@
         <a href="https://github.com/SungHunYang/MonoCLUE">code</a>
         <p></p>
         <p>
-          We propose MonoCLUE, which enhances monocular 3D detection by leveraging both local clustering and generalized scene memory of visual features. 
+          We propose <strong>MonoCLUE</strong>, which enhances monocular 3D detection by leveraging both local clustering and generalized scene memory of visual features. 
         </p>
       </td>
     </tr>
@@ -167,29 +255,47 @@
       </td>
     </tr>
 
-    <tr onmouseout="derf_stop()" onmouseover="derf_start()">
+    <tr>
       <td style="padding:20px;width:25%;vertical-align:middle">
-        <div class="one">
-          <div class="two" id='derf_image'><video  width=100% height=100% muted autoplay loop>
+      <style>
+        .one {
+          position: relative;
+          width: 100%;
+        }
+
+        .one video {
+          display: block;
+          width: 100%;
+        }
+
+        .one .two {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          opacity: 0;
+          transition: opacity 0.3s;
+        }
+
+        .one:hover .two {
+          opacity: 1;
+        }
+      </style>
+
+      <div class="one">
+        <div class="two">
+          <video width="100%" height="100%" muted autoplay loop>
             <source src="images/derf/derf_after.mp4" type="video/mp4">
             Your browser does not support the video tag.
-            </video></div>
-            <video  width=100% height=100% muted autoplay loop>
-              <source src="images/derf/derf_before.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
+          </video>
         </div>
-        <script type="text/javascript">
-          function derf_start() {
-            document.getElementById('derf_image').style.opacity = "1";
-          }
 
-          function derf_stop() {
-            document.getElementById('derf_image').style.opacity = "0";
-          }
-          sam_stop()
-        </script>
-      </td>
+        <video width="100%" height="100%" muted autoplay loop>
+          <source src="images/derf/derf_before.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </td>
       <td style="padding:20px;width:75%;vertical-align:middle">
         <a href="https://dogyoonlee.github.io/sparsederf/">
 			<papertitle>Sparse-DeRF: Deblurred Neural Radiance Fields from Sparse View</papertitle>
@@ -209,7 +315,7 @@
         <a href="https://arxiv.org/abs/2407.06613">arXiv</a>
         <p></p>
         <p>
-          Sparse-DeRF effectively addresses the challenging optimization problem posed by sparse blurry imagers, while simultaneously modeling clean radiance fields. More over, it proposes a more practical research direction by considering real-world scenarios.
+          <strong>Sparse-DeRF</strong> effectively addresses the challenging optimization problem posed by sparse blurry imagers, while simultaneously modeling clean radiance fields. More over, it proposes a more practical research direction by considering real-world scenarios.
         </p>
       </td>
     </tr>
@@ -257,7 +363,7 @@
         <a href="https://arxiv.org/abs/2412.16028">arXiv</a>
         <p></p>
         <p>
-        CoCoGaussian models the CoC at the 3D Gaussian level, reconstructing the precise 3D scene and enabling sharp novel view synthesis from defocused images.
+        <strong>CoCoGaussian</strong> models the CoC at the 3D Gaussian level, reconstructing the precise 3D scene and enabling sharp novel view synthesis from defocused images.
         </p>
       </td>
     </tr>
