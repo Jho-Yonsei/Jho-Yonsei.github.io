@@ -36,6 +36,10 @@
     async
     src="https://www.googletagmanager.com/gtag/js?id=G-TSQGH8Q0WV"
   ></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/loaders/GLTFLoader.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/controls/OrbitControls.js"></script>
+
 
   <link rel="stylesheet" href="./static/css/bulma.min.css">
   <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
@@ -98,10 +102,6 @@ MathJax.Hub.Config({
             <span class="author-block", style="color:#726f6f">Yonsei University</span>
           </div>
 
-          <!-- <div class="is-size-4 publication-authors">
-            <span class="author-block", style="color:#523bb8">ICCV 2025</span>
-          </div> -->
-
           <div class="column has-text-centered">
             <div class="publication-links">
               <span class="link-block">
@@ -137,14 +137,14 @@ MathJax.Hub.Config({
 <style>
   .video-border {
     display: inline-block;
-    padding: 2px; /* adjust thickness of your 'border' */
+    padding: 2px;
     border-radius: 4px;
-    background: linear-gradient(45deg, #ff9a9e, #fad0c4); /* try different gradient colors */
+    background: linear-gradient(45deg, #ff9a9e, #fad0c4);
   }
   .video-border video {
     display: block;
     border: none;
-    border-radius: 4px; /* match the wrapper for a consistent look */
+    border-radius: 4px;
   }
 </style>
 
@@ -153,7 +153,7 @@ MathJax.Hub.Config({
     max-width: 100%;
     margin: 0 auto;
     display: block;
-    border: none; /* remove the solid border */
+    border: none;
     border-radius: 4px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   }
@@ -163,19 +163,19 @@ MathJax.Hub.Config({
     margin: 0 auto;
     display: block;
     border: none;
-    border-radius: 0; /* removed border radius */
-    box-shadow: none; /* removed box shadow */
+    border-radius: 0;
+    box-shadow: none;
   }
   
-  /* Enhanced style to further reduce space between buttons and teaser video */
   .hero.teaser {
     padding-top: 0;
-    margin-top: -3rem; /* Added negative margin to pull the teaser section up */
+    margin-top: -3rem;
   }
   .hero.teaser .hero-body {
-    padding-top: 0; /* Reduced from 1rem to 0 */
+    padding-top: 0;
   }
 </style>
+
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
@@ -186,6 +186,190 @@ MathJax.Hub.Config({
     </div>
   </div>
 </section>
+
+<!-- =============================== -->
+<!--      Qualitative Visualization -->
+<!-- =============================== -->
+
+<section class="section">
+  <div class="container is-max-widescreen">
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-max_widescreen">
+        <h2 class="title is-3" style="font-weight:700;">Qualitative Visualization</h2>
+        <p>
+          Click on any thumbnail below to view the 3D reconstruction.
+          We sampled 2,000,000 points from each reconstruction for visualization.
+        </p>
+      </div>
+    </div>
+
+    <!-- 3D Model Viewer -->
+    <div class="model-viewer-container" style="text-align:center;">
+      <model-viewer id="QualitativeResult"
+          src="./assets/pointcloud/00_swiftvggt.glb"
+          alt="3D Model"
+          loading="eager"
+          touch-action="pan-y" 
+          environment-image="legacy"
+          camera-orbit="180deg 70deg 11m"
+          orientation="-180deg 0deg 10deg"
+          camera-target="-1m -1.2m auto"
+          zoom-sensitivity="0.1"
+          camera-controls 
+          disable-tap 
+          min-camera-orbit="auto auto 1m"
+          max-camera-orbit="auto auto 10m"
+          interaction-prompt="none"
+          shadow-intensity="0"
+          ar
+          disable-shadow 
+          ar-modes="webxr scene-viewer quick-look"
+          style="width: 90%; height: 500px; background: #ffffff; margin: 0 auto;">
+      </model-viewer>
+    </div>
+
+    <br>
+
+    <!-- Thumbnails -->
+    <div class="content has-text-centered">
+      <div class="thumbnail-container" id="thumbnail-qualitative">
+        <video src="./assets/videos/kitti_sequence_00.mp4" data-glb="./assets/pointcloud/00_swiftvggt.glb" data-scene="kitti_sequence_00" loop playsinline muted></video>
+        <video src="./assets/videos/kitti_sequence_13.mp4" data-glb="./assets/pointcloud/13_swiftvggt.glb" data-scene="kitti_sequence_13" loop playsinline muted></video>
+        <video src="./assets/videos/vkitti_scene_0001.mp4" data-glb="./assets/pointcloud/scene_0001_clone.glb" data-scene="vkitti_scene_0001" loop playsinline muted></video>
+        <video src="./assets/videos/waymo_163453191.mp4" data-glb="./assets/pointcloud/swiftvggt_163453191.glb" data-scene="waymo_163453191" loop playsinline muted></video>
+        <video src="./assets/videos/waymo_371159869.mp4" data-glb="./assets/pointcloud/swiftvggt_371159869.glb" data-scene="waymo_371159869" loop playsinline muted></video>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Styles -->
+<style>
+  .thumbnail-container img, .thumbnail-container video {
+    transition: all 0.3s ease;
+    border: 3px solid transparent;
+    cursor: pointer;
+  }
+  .thumbnail-selected {
+    transform: scale(1.2);
+    border: 6px solid #79b4f2 !important; 
+    box-shadow: 0 0 10px rgba(121, 180, 242, 0.5);
+    z-index: 10;
+    position: relative;
+  }
+  .thumbnail-container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 10px;
+    padding: 10px 0;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    align-items: center;
+  }
+  .thumbnail-container img,
+  .thumbnail-container video {
+    flex: 0 0 auto;
+    height: 120px;
+    object-fit: cover;
+  }
+
+  .thumbnail-container::-webkit-scrollbar { height: 6px; }
+  .thumbnail-container::-webkit-scrollbar-track {
+    background: #f1f1f1; border-radius: 10px;
+  }
+  .thumbnail-container::-webkit-scrollbar-thumb {
+    background: #888; border-radius: 10px;
+  }
+  .thumbnail-container::-webkit-scrollbar-thumb:hover { background: #555; }
+
+  @media (max-width: 768px) {
+    .thumbnail-container img,
+    .thumbnail-container video { height: 100px; }
+  }
+</style>
+
+<!-- Script -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+
+  const sceneConfigs = {
+    "kitti_sequence_00": {
+      orbit: "180deg 70deg 11m",
+      target: "1m -1.2m auto",
+      orientation: "-180deg 0deg 10deg"
+    },
+    "kitti_sequence_13": {
+      orbit: "180deg 70deg 10m",
+      target: "1.4m -1.2m auto",
+      orientation: "-180deg 0deg 45deg"
+    },
+    "vkitti_scene_0001": {
+      orbit: "180deg 70deg 4.5m",
+      target: "1m -0.4m auto",
+      orientation: "-180deg 0deg 0deg"
+    },
+    "waymo_163453191": {
+      orbit: "180deg 70deg 3.7m",
+      target: "0.3m -0.2m auto",
+      orientation: "-180deg 0deg 60deg"
+    },
+    "waymo_371159869": {
+      orbit: "180deg 70deg 4.5m",
+      target: "-0.5m -0.5m auto",
+      orientation: "-180deg 0deg -45deg"
+    }
+  };
+
+  const firstThumbnail = document.querySelector('#thumbnail-qualitative video, #thumbnail-qualitative img');
+  if (firstThumbnail) {
+    firstThumbnail.classList.add('thumbnail-selected');
+    if (firstThumbnail.tagName.toLowerCase() === 'video') {
+      firstThumbnail.play();
+    }
+  }
+
+  document.querySelectorAll('#thumbnail-qualitative img, #thumbnail-qualitative video').forEach(el => {
+
+    el.addEventListener('click', () => {
+
+      const glbSrc = el.getAttribute('data-glb');
+      const sceneId = el.getAttribute('data-scene');
+      const modelViewer = document.getElementById('QualitativeResult');
+
+      modelViewer.setAttribute('src', glbSrc);
+
+      if (sceneConfigs[sceneId]) {
+        const cfg = sceneConfigs[sceneId];
+        modelViewer.setAttribute('camera-orbit', cfg.orbit);
+        modelViewer.setAttribute('camera-target', cfg.target);
+        modelViewer.setAttribute('orientation', cfg.orientation);
+      }
+
+      modelViewer.resetTurntableRotation(0);
+      modelViewer.jumpCameraToGoal();
+
+      document.querySelectorAll('#thumbnail-qualitative img, #thumbnail-qualitative video')
+        .forEach(x => x.classList.remove('thumbnail-selected'));
+
+      el.classList.add('thumbnail-selected');
+
+      if (el.tagName.toLowerCase() === 'video') el.play();
+
+      document.querySelectorAll('#thumbnail-qualitative video').forEach(video => {
+        if (video !== el) {
+          video.pause();
+          video.currentTime = 0;
+        }
+      });
+
+    });
+  });
+});
+</script>
+
 
 
 <section class="section">
@@ -235,7 +419,7 @@ MathJax.Hub.Config({
   <div class="container is-max-widescreen">
     <div class="columns is-centered has-text-centered">
       <div class="column is-max">
-        <h2 class="title is-3">Visualization - KITTI</h2>
+        <h2 class="title is-3">Comparison - KITTI</h2>
 
         <div style="text-align:center; margin-bottom: 20px;">
           <button onclick="changeScene('00', 'Inference: 637.6 (s)<br>ATE RMSE: 92.1 (m)', 'Inference: 836.6 (s)<br>ATE RMSE: 9.9 (m)', '<strong>Inference: 239.8 (s)</strong><br>ATE RMSE: 8.2 (m)', this)" class="button scene-btn">Sequence 00</button>
@@ -430,8 +614,8 @@ function changeScene(sceneId, droidValue, longValue, swiftValue, btn) {
           <p>
             We thank the authors of <a
             href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> that kindly open sourced the template of this website.
-            The html script of video comparison is borrowed from <a
-            href="https://dorverbin.github.io/refnerf/">Ref-NeRF</a>.
+            The html script of 3D visualization is borrowed from <a
+            href="https://vgg-t.github.io/">VGGT</a>.
           </p>
         </div>
       </div>
