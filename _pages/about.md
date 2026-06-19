@@ -19,10 +19,10 @@ If you are interested in me, feel free to [contact me]({{ base_path }}/contacts.
 
 <small><i class="fa fa-download" aria-hidden="true"></i> Download my [CV]({{base_path}}/files/CV.pdf)</small>
 
-***
+<!-- ***
 # Girlfriend
-Chaemin Kim
-<small>Samsung Biologics</small>
+<strong>Chaemin Kim</strong> The Prettiest Girl
+<small>Samsung Biologics</small> -->
 
 ***
 # News
