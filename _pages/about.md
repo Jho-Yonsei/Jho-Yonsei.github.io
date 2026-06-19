@@ -21,19 +21,19 @@ If you are interested in me, feel free to [contact me]({{ base_path }}/contacts.
 
 ***
 # News
-- <span class="news-date">[Aug. 2026]</span> I will start my new position as a Research Scientist at NAVER AI Lab!
-- <span class="news-date">[Jun. 2026]</span> One paper was accepted at ECCV 2026!
-- <span class="news-date">[Feb. 2026]</span> Two papers were accepted at CVPR 2026 including one Findings!
-- <span class="news-date">[Nov. 2025]</span> One paper was accepted at AAAI 2026!
-- <span class="news-date">[Jun. 2025]</span> One paper was accepted at ICCV 2025!
-- <span class="news-date">[Jun. 2025]</span> I was selected as an Outstanding Reviewer for CVPR 2025!
-- <span class="news-date">[Apr. 2025]</span> One paper was accepted at TPAMI!
-- <span class="news-date">[Apr. 2025]</span> One paper was selected as a 🏆 CVPR 2025 Oral Paper!
-- <span class="news-date">[Feb. 2025]</span> Two papers were accepted at CVPR 2025!
-- <span class="news-date">[Dec. 2024]</span> One paper was accepted at AAAI 2025!
-- <span class="news-date">[Aug. 2024]</span> I will start my 2024 internship at NAVER Cloud Video Team!
-- <span class="news-date">[Feb. 2024]</span> One paper was accepted at CVPR 2024!
-- <span class="news-date">[Jul. 2023]</span> Two papers were accepted at ICCV 2023!
+- <span style="font-size: 15px;"><span class="news-date">[Aug. 2026]</span> I will start my new position as a Research Scientist at NAVER AI Lab!</span>
+- <span style="font-size: 15px;"><span class="news-date">[Jun. 2026]</span> One paper was accepted at ECCV 2026!</span>
+- <span style="font-size: 15px;"><span class="news-date">[Feb. 2026]</span> Two papers were accepted at CVPR 2026 including one Findings!</span>
+- <span style="font-size: 15px;"><span class="news-date">[Nov. 2025]</span> One paper was accepted at AAAI 2026!</span>
+- <span style="font-size: 15px;"><span class="news-date">[Jun. 2025]</span> One paper was accepted at ICCV 2025!</span>
+- <span style="font-size: 15px;"><span class="news-date">[Jun. 2025]</span> I was selected as an Outstanding Reviewer for CVPR 2025!</span>
+- <span style="font-size: 15px;"><span class="news-date">[Apr. 2025]</span> One paper was accepted at TPAMI!</span>
+- <span style="font-size: 15px;"><span class="news-date">[Apr. 2025]</span> One paper was selected as a 🏆 CVPR 2025 Oral Paper!</span>
+- <span style="font-size: 15px;"><span class="news-date">[Feb. 2025]</span> Two papers were accepted at CVPR 2025!</span>
+- <span style="font-size: 15px;"><span class="news-date">[Dec. 2024]</span> One paper was accepted at AAAI 2025!</span>
+- <span style="font-size: 15px;"><span class="news-date">[Aug. 2024]</span> I will start my 2024 internship at NAVER Cloud Video Team!</span>
+- <span style="font-size: 15px;"><span class="news-date">[Feb. 2024]</span> One paper was accepted at CVPR 2024!</span>
+- <span style="font-size: 15px;"><span class="news-date">[Jul. 2023]</span> Two papers were accepted at ICCV 2023!</span>
 
 <!-- ***
 # Recent Publications
