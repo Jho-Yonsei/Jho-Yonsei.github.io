@@ -1,0 +1,19 @@
+# main links links
+main:
+  - title: "Home"
+    url: /home/
+
+  - title: "Experience"
+    url: /experience/
+
+  - title: "Publications"
+    url: /publications/
+
+  # - title: "Projects"
+  #   url: /projects/
+
+  # - title: "Talks"
+  #   url: /talks/
+
+  - title: "Contacts"
+    url: /contacts/    
