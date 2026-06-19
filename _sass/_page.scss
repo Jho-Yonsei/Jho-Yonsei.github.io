@@ -50,6 +50,11 @@
 
 .page__content {
 
+  .news-date {
+    font-family: "Roboto Mono", $monospace;
+    font-weight: 400;
+  }
+
   h2 {
     padding-bottom: 0.5em;
     border-bottom: 1px solid $border-color;
