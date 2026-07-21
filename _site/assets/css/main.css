@@ -3171,7 +3171,7 @@ select:focus {
 }
 @media (min-width: 57.8125em) {
   .archive {
-    width: 83.0508474576%;
+    width: 78.813559322%;
     float: right;
     margin-right: 0;
     padding-left: 4.2372881356%;
@@ -3537,10 +3537,11 @@ select:focus {
     display: block;
     width: auto;
     height: auto;
+    text-align: center;
   }
 }
 .author__avatar img {
-  max-width: 200px;
+  max-width: 220px;
   border-radius: 50%;
 }
 @media (min-width: 57.8125em) {
