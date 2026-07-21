@@ -2776,10 +2776,10 @@ select:focus {
 
 @media (min-width: 57.8125em) {
   .page {
-    width: 83.0508474576%;
+    width: 78.813559322%;
     float: right;
     margin-right: 0;
-    padding-left: 4.2372881356%;
+    padding-left: 1.6949152542%;
     padding-right: 16.9491525424%;
   }
 }
@@ -3474,7 +3474,7 @@ select:focus {
 }
 @media (min-width: 57.8125em) {
   .sidebar {
-    width: 15.2542372881%;
+    width: 19.4915254237%;
     float: left;
     margin-right: 1.6949152542%;
     opacity: 1;
@@ -3540,7 +3540,7 @@ select:focus {
   }
 }
 .author__avatar img {
-  max-width: 175px;
+  max-width: 200px;
   border-radius: 50%;
 }
 @media (min-width: 57.8125em) {
