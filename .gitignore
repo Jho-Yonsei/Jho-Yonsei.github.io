@@ -2,3 +2,13 @@
 .DS_Store/
 data/.DS_Store/
 */.DS_Store/
+handoff/
+handoff.tar.gz
+profile3d_handoff/
+.DS_Store
+.sass-cache/
+# project pages are served from their source folders; the copies Jekyll puts in _site are 1 GB of duplicates
+_site/CoCoGaussian/
+_site/CoMoGaussian/
+_site/SMURF/
+_site/SwiftVGGT/

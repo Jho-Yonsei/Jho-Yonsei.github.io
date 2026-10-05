@@ -4,14 +4,25 @@
   {% assign author = site.data.authors[page.author] %}{% else %}{% assign author = site.author %}
 {% endif %}
 
-<div itemscope itemtype="http://schema.org/Person">
+<div class="author__profile" itemscope itemtype="http://schema.org/Person">
 
   <div class="author__avatar">
     {% if author.avatar contains "://" %}
-    	<img src="{{ author.avatar }}" alt="{{ author.name }}">
+      {% assign avatar_url = author.avatar %}
     {% else %}
-    	<img src="{{ author.avatar | prepend: "/images/" | prepend: base_path }}" class="author__avatar" alt="{{ author.name }}">
+      {% assign avatar_url = author.avatar | prepend: "/images/" | relative_url %}
     {% endif %}
+    {% comment %}3D Gaussian-splat avatar (assets/js/profile3d-splat.js); the photo inside is the placeholder and fallback{% endcomment %}
+    <div class="profile3d"
+         data-splat="{{ '/assets/profile-3d/profile3d.ksplat' | relative_url }}"
+         data-splat-fallback="{{ '/assets/profile-3d/profile3d.splat' | relative_url }}"
+         data-cam="0,0.05,2.9" data-look="0,-0.1,0"
+         role="img" aria-label="3D profile of {{ author.name }}, drag to rotate">
+      <div class="profile3d__stage">
+        <img src="{{ avatar_url }}" class="profile3d__fallback" alt="{{ author.name }}">
+      </div>
+      <div class="profile3d__hint" aria-hidden="true">drag to rotate</div>
+    </div>
   </div>
 
   <div class="author__content">
@@ -105,6 +116,9 @@
       {% endif %}
       {% if author.googlescholar %}
         <li><a href="{{ author.googlescholar }}"><i class="fas fa-fw fa-graduation-cap"></i> Google Scholar</a></li>
+      {% endif %}
+      {% if author.cv %}
+        <li><a href="{{ author.cv | relative_url }}"><i class="fas fa-fw fa-file-alt" aria-hidden="true"></i> CV</a></li>
       {% endif %}
       {% if author.pubmed %}
         <li><a href="{{ author.pubmed }}"><i class="ai ai-pubmed-square ai-fw"></i> PubMed</a></li>

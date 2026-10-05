@@ -13,7 +13,7 @@ redirect_from:
 <span style="color:gray"><small>Sep. 2021 - Aug. 2026</small></span>  
 Combined M.S. and Ph.D., Electrical and Electronic Engineering, [Yonsei University](https://www.yonsei.ac.kr/en_sc/index.jsp), Seoul, Korea  
 <small>
-  &nbsp;&nbsp;&bull; Dissertation: Learning 3D Gaussian Splatting from Degraded Images  
+  &nbsp;&nbsp;&bull; Dissertation: [Learning 3D Gaussian Splatting from Degraded Images]({{ '/files/Thesis.pdf' | relative_url }})  
   &nbsp;&nbsp;&bull; Advisor : Prof. [Sangyoun Lee](http://mvp.yonsei.ac.kr/)  
 </small>
 

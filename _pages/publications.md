@@ -18,6 +18,11 @@ You can also find my articles on my [Google Scholar](https://scholar.google.com/
 
 ***
 ## 2026
+- DensiTok: Making Feed-forward 3D Gaussian Splatting See More Views Than It Is Given  
+  <small>Minhyeok Lee*, <strong style="color:#1E293B">Jungho Lee*</strong>, Minseok Kang, Heeseung Choi, Ig-Jae Kim, Sangyoun Lee</small>  
+  <small>Submitted to *International Conference on Learning Representations (ICLR), 2027*</small>  
+  <small>[[paper]()][[project page](https://hydragon.co.kr/DensiTok/)][[code]()]</small>  
+
 - Revisiting Weakly-Supervised Video Scene Graph Generation via Pair Affinity Learning  
   <small>Minseok Kang, Minhyeok Lee, Minjung Kim, <strong style="color:#1E293B">Jungho Lee</strong>, Donghyeong Kim, Sungmin Woo, Inseok Jeon, Sangyoun Lee</small>  
   <small>*European Conference on Computer Vision (ECCV), 2026*</small>  

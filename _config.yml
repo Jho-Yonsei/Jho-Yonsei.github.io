@@ -87,6 +87,7 @@ author:
   employer         :
   pubmed           : 
   googlescholar    : "https://scholar.google.com/citations?user=NAj3cTcAAAAJ&hl"
+  cv               : "/files/CV.pdf"
   email            : "2015142131@yonsei.ac.kr"
   researchgate     : 
   uri              :
@@ -146,6 +147,10 @@ exclude:
   - package.json
   - tmp
   - vendor
+  - handoff
+  - handoff.tar.gz
+  - profile3d_handoff
+  - CLAUDE.md
 keep_files:
   - .git
   - .svn

@@ -69,18 +69,44 @@
    Author profile and links
    ========================================================================== */
 
-.author__avatar {
-  display: table-cell;
-  vertical-align: top;
-  width: 36px;
-  // set width only, for non-square avatars
-  // height: 36px;
+/* Below $large the author profile appears on the home page only; elsewhere the whole sidebar is
+   dropped so the page content starts at the top. (The viewer script skips containers that are not
+   laid out, so nothing is downloaded for the hidden sidebar.) */
+.sidebar:not(.sidebar--home) {
+  display: none;
 
   @include breakpoint($large) {
     display: block;
+  }
+}
+
+/* Below $large (phones, tablets) the profile is a wrapping flex row: the name/bio and the "Follow"
+   button share the first row with the button pushed to the right edge, and the avatar takes the
+   second row on its own. At $large and up it is the theme's stacked block layout. */
+.author__profile {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  @include breakpoint($large) {
+    display: block;
+  }
+}
+
+.author__avatar {
+  display: block;
+  order: 1; /* after the name/bio row */
+  flex: 0 0 100%;
+  width: 100%;
+  margin-top: 1em;
+  text-align: center;
+
+  @include breakpoint($large) {
+    order: 0;
+    flex: none;
     width: auto;
     height: auto;
-    text-align: center;
+    margin-top: 0;
   }
 
   img {
@@ -95,16 +121,15 @@
 }
 
 .author__content {
-  display: table-cell;
-  vertical-align: top;
-  padding-left: 15px;
-  padding-right: 25px;
+  display: block;
+  flex: 1 1 0;
+  min-width: 0;
+  padding-right: 15px;
   line-height: 1;
 
   @include breakpoint($large) {
-    display: block;
+    flex: none;
     width: 100%;
-    padding-left: 0;
     padding-right: 0;
   }
 }
@@ -123,7 +148,7 @@
 }
 
 .author__bio {
-  margin: 0;
+  margin: 8px 0 0;
 
   @include breakpoint($large) {
     margin-top: 10px;
@@ -133,11 +158,10 @@
 
 .author__urls-wrapper {
   position: relative;
-  display: table-cell;
-  vertical-align: middle;
+  display: block;
+  margin-left: auto; /* right edge of the row below $large */
   font-family: $sans-serif;
   z-index: 10;
-  position: relative;
   cursor: pointer;
 
   li:last-child {
@@ -147,7 +171,7 @@
   }
 
   @include breakpoint($large) {
-    display: block;
+    margin-left: 0;
   }
 
   button {

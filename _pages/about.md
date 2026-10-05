@@ -15,9 +15,9 @@ I am Jungho Lee, a Research Scientist at [NAVER AI Lab](https://www.navercorp.co
 
 My research lies in 3D computer vision and visual intelligence. I am interested in building robust and scalable systems that can perceive, reconstruct, and understand the 3D world from real-world visual observations.
 
-If you are interested in me, feel free to [contact me]({{ base_path }}/contacts.html).
+If you are interested in me, feel free to [contact me]({{ '/contacts/' | relative_url }}).
 
-<small><i class="fa fa-download" aria-hidden="true"></i> Download my [CV]({{base_path}}/files/CV.pdf)</small>
+<small><i class="fa fa-download" aria-hidden="true"></i> Download my [CV]({{ '/files/CV.pdf' | relative_url }})</small>
 
 ***
 # News
