@@ -13,14 +13,17 @@ Claude Code는 이 파일을 세션 시작 시 자동으로 읽습니다. 이 �
   bundle exec jekyll build
   ruby -run -e httpd _site -p 4000      # http://localhost:4000
   ```
-- 커밋/푸시는 사용자가 지시할 때만 한다. 2026-10-02와 2026-10-05 작업분은 2026-10-05에 사용자 지시로 한 커밋에 묶어 커밋했다(푸시는 안 함).
+- 커밋/푸시는 사용자가 지시할 때만 한다. 2026-10-02와 2026-10-05 작업분은 2026-10-05에 사용자 지시로 한 커밋(`309eeca`)에 묶어 커밋하고 2026-10-06에 푸시했다.
   커밋에서 뺀 것: `_talks/Thesis.pdf`(Experience가 링크하는 `files/Thesis.pdf`의 15 MB 중복본, 미추적 상태로 둠),
   `_site/CoCoGaussian|CoMoGaussian|SMURF|SwiftVGGT/`(프로젝트 페이지의 빌드 사본 약 1.1 GB, 한 번도 커밋된 적 없음 → `.gitignore`에 추가.
   GitHub Pages는 소스 폴더에서 직접 서빙하므로 `_config.yml` exclude에 넣으면 안 됨), `.sass-cache/`, `.DS_Store`(루트 것은 추적 해제).
 - git 작성자 정보가 이 Mac에 없어서 이전 커밋과 같은 `Jho-Yonsei <2015142131@yonsei.ac.kr>`를 저장소 전용(`git config`, `--global` 아님)으로 설정했다.
 - `.git/hooks/`에 Git LFS 훅(post-checkout, post-commit, post-merge, pre-push)이 깔려 있지만 git-lfs는 설치돼 있지 않고 `.gitattributes`는 비어 있어
   LFS로 추적되는 파일은 없다(PDF 등은 전부 일반 blob). 커밋 때 post-commit 훅이 경고만 냈고, git-lfs가 없으면 `.git/hooks/pre-push`가 exit 2로 `git push`를 중단시킨다.
-  해결은 `brew install git-lfs`(훅 유지) 또는 네 훅 파일 삭제(LFS 안 쓰므로 안전) 중 하나. 사용자에게 알렸다.
+  사용자 동의로 네 훅 파일을 삭제했다(LFS 안 쓰므로 안전; `git lfs install`을 다시 실행하지 않는 한 돌아오지 않음).
+- GitHub 인증: 이 Mac에는 키체인 자격 증명도, GitHub에 등록된 SSH 키도 없었다. 사용자 선택으로 `brew install gh` 후 사용자가 직접
+  `gh auth login`(HTTPS, 브라우저 로그인, 계정 Jho-Yonsei)을 했고, git 자격 증명은 gh의 keyring 토큰을 쓴다. 이후 `git push origin main`은 그냥 된다.
+  `gh api repos/Jho-Yonsei/Jho-Yonsei.github.io/pages/builds/latest`로 Pages 빌드 상태를 볼 수 있다.
 
 ## 2. 현재 구현 (2026-10-02 도입, 2026-10-05 자산 교체·스웨이·링크 수정)
 
@@ -114,7 +117,14 @@ Claude Code는 이 파일을 세션 시작 시 자동으로 읽습니다. 이 �
   wrapper 오른쪽 끝과 일치. Publications/Experience/Contacts에서는 `.sidebar` `display: none`이고 jsDelivr·ksplat 요청이 하나도 없음.
   그 상태에서 1400px로 리사이즈하면 뷰어가 마운트됨. 데스크톱(1400px)에서는 레이아웃 변화 없음도 확인했다.
 
-### 2-6. 기타
+### 2-6. CV 파일과 이메일 (2026-10-06)
+
+- `files/CV.pdf`를 사용자가 루트에 둔 새 파일(PDF 1.7)로 교체했다(루트의 사본은 `files/`로 옮김. 루트에 두면 Jekyll이 `/CV.pdf`로도 배포한다).
+  이전 CV는 git 히스토리(`309eeca` 이전)에 있다.
+- 사이드바 Email(mailto)은 `_config.yml` `author.email`이며 `2015142131@yonsei.ac.kr` → `jungho.lee_v@navercorp.com`으로 바꿨다.
+  git 작성자 이메일(`git config user.email`)은 이전 커밋과의 일관성을 위해 yonsei 주소 그대로다.
+
+### 2-7. 기타
 
 - `_config.yml` `exclude`에 `handoff`, `handoff.tar.gz`, `profile3d_handoff`, `CLAUDE.md`. `.gitignore`에 `handoff/`, `handoff.tar.gz`, `profile3d_handoff/`.
   (제외하지 않으면 Jekyll이 handoff 폴더의 자산 사본 10 MB를 `_site/`에 복사한다.)
